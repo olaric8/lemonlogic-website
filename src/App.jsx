@@ -1,3 +1,4 @@
+import BackToTop from "./components/BackToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
@@ -25,12 +26,12 @@ export default function App() {
         </div>
       </nav>
 
-      <section className="max-w-7xl mx-auto px-6 py-24">
+      <section className="max-w-7xl mx-auto px-6 py-16 md:py-24">
         <div className="max-w-4xl">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-50 border border-yellow-200 text-sm font-medium text-slate-700 mb-8">
   AI Automation • Business Systems • Operational Intelligence
 </div>
-          <h1 className="text-6xl font-bold leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             Automate Operations.
             <br />
             Eliminate Manual Work.
@@ -44,19 +45,19 @@ export default function App() {
   intelligence solutions.
 </p>
 
-          <div className="mt-10 flex gap-4">
+          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
             <a
-              href="https://wa.me/2348144664481"
+              href="https://wa.me/2348144664481?text=Hello%20LemonLogic,%20I'd%20like%20to%20schedule%20a%20consultation."
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold inline-block"
+              className="w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold text-center inline-block"
             >
-              Book Consultation
+              Schedule Consultation
             </a>
 
             <a
   href="#portfolio"
-  className="border border-slate-300 px-6 py-3 rounded-lg font-semibold inline-block"
+  className="w-full sm:w-auto border border-slate-300 px-6 py-3 rounded-lg font-semibold text-center inline-block"
 >
   View Portfolio
 </a>
@@ -70,6 +71,7 @@ export default function App() {
 <CTA />
 <Footer />
 <WhatsAppButton />
+<BackToTop />
     </div>
   )
 }
