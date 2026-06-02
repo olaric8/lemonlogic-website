@@ -13,13 +13,25 @@ export default function CTA() {
         </p>
 
         <div className="mt-10 flex justify-center gap-4">
-          <button className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold">
-            Schedule Consultation
-          </button>
+          <div className="mt-10 flex justify-center gap-4">
+  <a
+    href="https://wa.me/2348144664481?text=Hello%20LemonLogic,%20I'd%20like%20to%20schedule%20a%20consultation."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold"
+  >
+    Schedule Consultation
+  </a>
 
-          <button className="border border-slate-300 px-6 py-3 rounded-lg font-semibold">
-            Contact Us
-          </button>
+  <a
+    href="https://wa.me/2348144664481?text=Hello%20LemonLogic,%20I'd%20like%20to%20learn%20more%20about%20your%20services."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="border border-slate-300 px-6 py-3 rounded-lg font-semibold hover:bg-slate-100"
+  >
+    Contact Us
+  </a>
+</div>
         </div>
 
       </div>
