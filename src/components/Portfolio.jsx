@@ -16,29 +16,30 @@ export default function Portfolio() {
       link: "/portfolio/gsca",
     },
     {
-  title: "LA AUTOWORKS LTD",
-  description:
-    "Premium automotive service platform featuring diagnostics, restoration showcases, fleet maintenance presentation, customer engagement workflows, and responsive digital experiences.",
-  tags: [
-    "React",
-    "Vite",
-    "Automotive",
-    "Fleet Services",
-    "Responsive Design",
-  ],
-  link: "/portfolio/la-autoworks",
-},
-    {
-      title: "Intelligent Invoice Automation System",
+      title: "LA AUTOWORKS LTD",
       description:
-        "Business process automation solution featuring automated invoice generation, dynamic calculations, customer workflows, professional A4 print layouts, and operational efficiency enhancements.",
+        "Premium automotive service platform featuring diagnostics, restoration showcases, fleet maintenance presentation, customer engagement workflows, and responsive digital experiences.",
+      tags: [
+        "React",
+        "Vite",
+        "Automotive",
+        "Fleet Services",
+        "Responsive Design",
+      ],
+      link: "/portfolio/la-autoworks",
+    },
+    {
+      title: "Intelligent Invoice & Business Document Automation",
+      description:
+        "Business automation platform featuring invoice generation, quotations, waybill management, workflow automation, professional A4 printing, and operational efficiency improvements.",
       tags: [
         "Automation",
         "Invoices",
-        "HTML",
+        "Workflow",
         "JavaScript",
         "Business Systems",
       ],
+      link: "/portfolio/invoice-automation",
     },
   ];
 
