@@ -5,15 +5,15 @@ export default function Portfolio() {
       description:
         "Enterprise logistics intelligence platform featuring GIS intelligence, smart boundary management, analytics, reporting, and operational visibility.",
       tags: [
-        "React",
-        "Node.js",
-        "GIS",
-        "Enterprise",
-        "Logistics",
-      ],
+  "Flutter",
+  "Node.js",
+  "PostgreSQL",
+  "GIS Intelligence",
+  "Enterprise",
+],
     },
     {
-      title: "LAAUTOWORKSLTD",
+      title: "LA Autoworks Digital Business Platform",
       description:
         "Professional automotive services website designed to improve customer engagement, showcase services, and strengthen online presence.",
       tags: [
@@ -23,25 +23,35 @@ export default function Portfolio() {
         "UI/UX",
       ],
     },
+    {
+      title: "Intelligent Invoice Automation System",
+      description:
+        "Business process automation solution featuring automated invoice generation, dynamic calculations, customer workflows, professional A4 print layouts, and operational efficiency enhancements.",
+      tags: [
+        "Automation",
+        "Invoices",
+        "HTML",
+        "JavaScript",
+        "Business Systems",
+      ],
+    },
   ];
 
   return (
     <section id="portfolio" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold">
-            Featured Work
+            Featured Projects
           </h2>
-
           <p className="mt-4 text-slate-600">
-            Real projects demonstrating our expertise in business systems,
-            operational intelligence, and digital solutions.
+            Real-world solutions spanning enterprise software, business automation,
+            and digital platforms designed to improve efficiency, visibility,
+            and growth.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
               key={project.title}
@@ -50,11 +60,9 @@ export default function Portfolio() {
               <h3 className="text-2xl font-bold mb-4">
                 {project.title}
               </h3>
-
               <p className="text-slate-600 mb-6">
                 {project.description}
               </p>
-
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
@@ -67,9 +75,7 @@ export default function Portfolio() {
               </div>
             </div>
           ))}
-
         </div>
-
       </div>
     </section>
   );
