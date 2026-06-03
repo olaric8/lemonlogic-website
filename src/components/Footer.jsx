@@ -13,14 +13,14 @@ export default function Footer() {
 
         <div className="mt-6 space-y-2 text-slate-300">
           <p>
-  Email:{" "}
-  <a
-    href="mailto:lemonlogicai1@gmail.com"
-    className="hover:text-yellow-400"
-  >
-    lemonlogicai1@gmail.com
-  </a>
-</p>
+            Email: {" "}
+            <a
+  href="mailto:hello@lemonlogicai.com?subject=Inquiry%20from%20LemonLogic%20Website&body=Hello%20LemonLogic,%0D%0A%0D%0AI'd%20like%20to%20learn%20more%20about%20your%20services.%0D%0A%0D%0ARegards,"
+  className="hover:text-yellow-400"
+>
+  hello@lemonlogicai.com
+</a>
+          </p>
 
           <p>
   Phone:{" "}
