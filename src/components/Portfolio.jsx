@@ -13,16 +13,16 @@ export default function Portfolio() {
 ],
     },
     {
-      title: "LA Autoworks Digital Business Platform",
-      description:
-        "Professional automotive services website designed to improve customer engagement, showcase services, and strengthen online presence.",
-      tags: [
-        "Website",
-        "Business",
-        "Responsive",
-        "UI/UX",
-      ],
-    },
+  title: "LA AUTOWORKS LTD",
+  description:
+    "Professional automotive services website designed to improve customer engagement, showcase services, and strengthen online presence.",
+  tags: [
+    "Website",
+    "Business",
+    "Responsive",
+    "UI/UX",
+  ],
+},
     {
       title: "Intelligent Invoice Automation System",
       description:
