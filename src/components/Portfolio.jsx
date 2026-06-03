@@ -16,16 +16,18 @@ export default function Portfolio() {
       link: "/portfolio/gsca",
     },
     {
-      title: "LA AUTOWORKS LTD",
-      description:
-        "Professional automotive services website designed to improve customer engagement, showcase services, and strengthen online presence.",
-      tags: [
-        "Website",
-        "Business",
-        "Responsive",
-        "UI/UX",
-      ],
-    },
+  title: "LA AUTOWORKS LTD",
+  description:
+    "Premium automotive service platform featuring diagnostics, restoration showcases, fleet maintenance presentation, customer engagement workflows, and responsive digital experiences.",
+  tags: [
+    "React",
+    "Vite",
+    "Automotive",
+    "Fleet Services",
+    "Responsive Design",
+  ],
+  link: "/portfolio/la-autoworks",
+},
     {
       title: "Intelligent Invoice Automation System",
       description:
@@ -43,7 +45,6 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold">
             Featured Projects
@@ -57,7 +58,6 @@ export default function Portfolio() {
         </div>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-
           {projects.map((project) => (
             <div
               key={project.title}
@@ -90,12 +90,9 @@ export default function Portfolio() {
                   View Case Study →
                 </Link>
               )}
-
             </div>
           ))}
-
         </div>
-
       </div>
     </section>
   );
