@@ -1,17 +1,18 @@
 export default function Portfolio() {
   const projects = [
     {
-      title: "GSCA Logistics Intelligence Platform",
-      description:
-        "Enterprise logistics intelligence platform featuring GIS intelligence, smart boundary management, analytics, reporting, and operational visibility.",
-      tags: [
-  "Flutter",
-  "Node.js",
-  "PostgreSQL",
-  "GIS Intelligence",
-  "Enterprise",
-],
-    },
+  title: "GSCA Logistics Intelligence Platform",
+  description:
+    "Enterprise logistics intelligence platform featuring GIS intelligence, smart boundary management, analytics, reporting, and operational visibility.",
+  tags: [
+    "React",
+    "Node.js",
+    "GIS",
+    "Enterprise",
+    "Logistics",
+  ],
+  link: "/portfolio/gsca",
+},
     {
   title: "LA AUTOWORKS LTD",
   description:
@@ -64,15 +65,24 @@ export default function Portfolio() {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 rounded-full bg-yellow-50 text-slate-700 border border-yellow-200 text-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+  {project.tags.map((tag) => (
+    <span
+      key={tag}
+      className="px-3 py-1 rounded-full bg-yellow-50 text-slate-700 border border-yellow-200 text-sm"
+    >
+      {tag}
+    </span>
+  ))}
+</div>
+
+{project.link && (
+  <a
+    href={project.link}
+    className="inline-block mt-6 text-yellow-600 font-semibold hover:underline"
+  >
+    View Case Study →
+  </a>
+)}
             </div>
           ))}
         </div>
