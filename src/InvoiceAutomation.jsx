@@ -1,214 +1,183 @@
+import { Link } from "react-router-dom";
+
 export default function InvoiceAutomation() {
   return (
     <div className="min-h-screen bg-white text-slate-800">
-
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-yellow-400 via-yellow-300 to-white py-24">
+      {/* HERO */}
+      <section className="bg-gradient-to-br from-red-900 via-black to-red-950 text-white py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <span className="inline-block px-4 py-2 rounded-full bg-white border border-yellow-300 text-sm font-semibold">
-            Business Automation Case Study
+          <span className="inline-block px-4 py-2 bg-red-600 rounded-full text-sm font-semibold">
+            Case Study
           </span>
-
           <h1 className="mt-8 text-5xl md:text-7xl font-black">
-            Intelligent Invoice & Business Document Automation
+            INVOICE AUTOMATION
           </h1>
-
-          <p className="mt-8 max-w-4xl text-xl text-slate-700">
-            A custom-built automation platform engineered to streamline
-            invoicing, quotations, waybills, document generation,
-            calculations, and business workflows while maintaining
-            professional print-ready output.
+          <p className="mt-8 max-w-4xl text-xl text-slate-300">
+            Premium automation platform designed to showcase
+            advanced diagnostics, fleet maintenance expertise,
+            vehicle restoration capabilities, and customer engagement
+            workflows.
           </p>
         </div>
       </section>
 
-      {/* Overview */}
+      {/* OVERVIEW */}
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-8">
-            Project Overview
-          </h2>
-
+          <h2 className="text-4xl font-bold mb-8">Project Overview</h2>
           <p className="text-lg text-slate-600 leading-relaxed">
-            This solution was developed to eliminate repetitive manual
-            document preparation and provide businesses with a faster,
-            more accurate way to generate invoices, quotations,
-            delivery documents, and customer records.
+            The Invoice Automation project required a modern digital platform capable
+            of presenting premium services, showcasing
+            capabilities, supporting customer enquiries,
+            and strengthening credibility among both individual
+            users and commercial operators.
           </p>
         </div>
       </section>
 
-      {/* Challenge */}
-      <section className="bg-slate-100 py-24">
+      {/* CHALLENGE */}
+      <section className="py-24 bg-slate-100">
         <div className="max-w-6xl mx-auto px-6">
-
-          <h2 className="text-4xl font-bold mb-12">
-            The Challenge
-          </h2>
-
+          <h2 className="text-4xl font-bold mb-12">The Challenge</h2>
           <div className="grid md:grid-cols-2 gap-8">
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Manual invoice preparation consumed valuable time.
+              Present specialized expertise online.
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Repeated calculations increased risk of human error.
+              Improve customer trust and visibility.
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Business documents lacked consistency.
+              Showcase restoration and repair capabilities.
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Printing and record management were inefficient.
+              Support customer enquiries and opportunities.
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Solution */}
+      {/* SOLUTION */}
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
-
-          <h2 className="text-4xl font-bold mb-12">
-            Solution Delivered
-          </h2>
-
+          <h2 className="text-4xl font-bold mb-12">Solution Delivered</h2>
           <div className="grid md:grid-cols-3 gap-8">
-
             {[
-              "Invoice Generation",
-              "Quotation Management",
-              "Waybill Creation",
-              "Customer Management",
-              "Document Number Automation",
-              "Dynamic Calculations",
-              "Print Optimization",
-              "Amount-to-Words Conversion",
-              "Workflow Standardization",
-            ].map((feature) => (
+              "Service Booking Experience",
+              "WhatsApp Integration",
+              "Interactive Gallery",
+              "Maintenance Presentation",
+              "Restoration Showcases",
+              "Location Mapping",
+              "Responsive Mobile Design",
+              "Customer Contact Workflows",
+              "Professional Brand Positioning"
+            ].map((item) => (
               <div
-                key={feature}
+                key={item}
                 className="border border-slate-200 rounded-2xl p-8"
               >
-                {feature}
+                {item}
               </div>
             ))}
-
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="bg-slate-100 py-24">
+      {/* SERVICES */}
+      <section className="py-24 bg-slate-100">
         <div className="max-w-6xl mx-auto px-6">
-
-          <h2 className="text-4xl font-bold mb-12">
-            Key Automation Features
-          </h2>
-
+          <h2 className="text-4xl font-bold mb-12">Specialized Services Highlighted</h2>
           <div className="grid md:grid-cols-2 gap-8">
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Dynamic line-item calculations with automatic totals.
+              Premium Computer Diagnostics
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Professional A4 print-ready layouts.
+              Heavy Multi-Plate Powertrain Overhauling
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Automated document numbering workflows.
+              Dust-Free Paint Oven Baking Restorations
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Customer information management and reuse.
+              Suspension & Track Alignment Strengthening
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Mobile-friendly operational interface.
+              Specialist Repairs
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Export, print, and PDF generation workflows.
+              Commercial Fleet Maintenance Networks
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Tech Stack */}
+      {/* TECH STACK */}
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
-
-          <h2 className="text-4xl font-bold mb-10">
-            Technology Stack
-          </h2>
-
+          <h2 className="text-4xl font-bold mb-10">Technology Stack</h2>
           <div className="flex flex-wrap gap-4">
-
             {[
-              "HTML5",
-              "CSS3",
-              "JavaScript",
-              "Business Automation",
-              "Workflow Systems",
-              "Invoice Management",
-              "Print Optimization",
+              "React",
+              "Vite",
+              "Netlify",
               "Responsive Design",
+              "Tailwind CSS",
+              "Business Website"
             ].map((tech) => (
               <span
                 key={tech}
-                className="px-5 py-2 rounded-full border border-yellow-300 bg-yellow-50"
+                className="px-5 py-2 border border-red-300 rounded-full"
               >
                 {tech}
               </span>
             ))}
-
           </div>
         </div>
       </section>
 
-      {/* Results */}
-      <section className="bg-yellow-50 py-24">
+      {/* RESULTS */}
+      <section className="py-24 bg-red-50">
         <div className="max-w-6xl mx-auto px-6">
-
-          <h2 className="text-4xl font-bold mb-12">
-            Business Outcomes
-          </h2>
-
+          <h2 className="text-4xl font-bold mb-12">Business Outcomes</h2>
           <div className="grid md:grid-cols-3 gap-8">
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Faster document preparation and processing.
+              Improved Online Visibility
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Reduced manual calculation errors.
+              Stronger Brand Credibility
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Consistent professional business documents.
+              Better Customer Engagement
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Improved operational efficiency.
+              Enhanced Mobile Accessibility
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Better document management workflows.
+              Simplified Customer Enquiries
             </div>
-
             <div className="bg-white p-8 rounded-2xl shadow">
-              Scalable automation for growing businesses.
+              Improved Service Positioning
             </div>
-
           </div>
         </div>
       </section>
 
+      {/* Conversion CTA */}
+      <section className="mt-20 mx-6 md:mx-auto max-w-5xl rounded-2xl bg-slate-900 text-white p-12 text-center">
+        <h2 className="text-4xl font-bold mb-4">Need Something Similar?</h2>
+        <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
+          LemonLogic builds intelligent automation, business systems, dashboards,
+          and operational platforms tailored to organizational needs.
+        </p>
+        <Link
+          to="/contact"
+          className="inline-block bg-red-600 text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition"
+        >
+          Book A Free Consultation
+        </Link>
+      </section>
+
+      {/* Bottom spacer */}
+      <div className="h-20"></div>
     </div>
   );
 }

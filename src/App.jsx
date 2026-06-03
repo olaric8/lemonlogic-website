@@ -1,3 +1,4 @@
+import Contact from "./Contact";
 import InvoiceAutomation from "./InvoiceAutomation";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
@@ -9,7 +10,10 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-
+<Route
+  path="/contact"
+  element={<Contact />}
+/>
         <Route
           path="/portfolio/gsca"
           element={<GSCA />}

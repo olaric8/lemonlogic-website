@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 export default function GSCA() {
   return (
     <div className="min-h-screen bg-white text-slate-800">
-
       {/* Hero Section */}
       <section className="bg-slate-900 text-white py-24">
         <div className="max-w-5xl mx-auto px-6">
@@ -42,31 +42,26 @@ export default function GSCA() {
           </div>
         </div>
       </section>
-<section className="py-20">
-  <div className="max-w-5xl mx-auto px-6">
 
-    <h2 className="text-3xl font-bold mb-6">
-      Project Overview
-    </h2>
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-6">Project Overview</h2>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            GSCA is an enterprise logistics intelligence platform developed by
+            LemonLogic to provide centralized operational visibility, geographic
+            intelligence, administrative governance, and enterprise-grade
+            management capabilities. The platform combines GIS intelligence,
+            role-based access control, operational dashboards, audit tracking,
+            and notification systems into a unified solution designed to support
+            complex logistics operations.
+          </p>
+        </div>
+      </section>
 
-    <p className="text-lg text-slate-600 leading-relaxed">
-      GSCA is an enterprise logistics intelligence platform developed by
-      LemonLogic to provide centralized operational visibility, geographic
-      intelligence, administrative governance, and enterprise-grade
-      management capabilities. The platform combines GIS intelligence,
-      role-based access control, operational dashboards, audit tracking,
-      and notification systems into a unified solution designed to support
-      complex logistics operations.
-    </p>
-
-  </div>
-</section>
       {/* The Challenge */}
       <section className="py-20">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-6">
-            The Challenge
-          </h2>
+          <h2 className="text-3xl font-bold mb-6">The Challenge</h2>
           <p className="text-lg text-slate-600 leading-relaxed">
             Logistics organizations often struggle with fragmented operational
             data, limited geographic visibility, and inefficient administrative
@@ -79,9 +74,7 @@ export default function GSCA() {
       {/* Solution Delivered */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-6">
-            Solution Delivered
-          </h2>
+          <h2 className="text-3xl font-bold mb-6">Solution Delivered</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-6 bg-white rounded-xl border">
               <h3 className="font-bold text-xl mb-2">GIS Intelligence</h3>
@@ -132,9 +125,7 @@ export default function GSCA() {
       {/* Technology Stack */}
       <section className="py-20">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-6">
-            Technology Stack
-          </h2>
+          <h2 className="text-3xl font-bold mb-6">Technology Stack</h2>
           <div className="flex flex-wrap gap-3">
             {[
               "Flutter",
@@ -159,9 +150,7 @@ export default function GSCA() {
       {/* Business Outcomes */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-bold mb-6">
-            Business Outcomes
-          </h2>
+          <h2 className="text-3xl font-bold mb-6">Business Outcomes</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-6 bg-white rounded-xl border">
               Centralized operational visibility across logistics activities.
@@ -179,27 +168,23 @@ export default function GSCA() {
         </div>
       </section>
 
-      {/* Footer / CTA Section */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold">
-            Need A Similar Solution?
-          </h2>
-          <p className="mt-6 text-xl text-slate-600">
-            LemonLogic designs and builds intelligent business systems, automation
-            platforms, dashboards, and operational intelligence solutions.
-          </p>
-          <a
-            href="https://wa.me/2348144664481"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-block bg-yellow-400 hover:bg-yellow-500 px-8 py-4 rounded-lg font-semibold"
-          >
-            Discuss Your Project
-          </a>
-        </div>
+      {/* Conversion CTA */}
+      <section className="mt-20 mx-6 md:mx-auto max-w-5xl rounded-2xl bg-slate-900 text-white p-12 text-center">
+        <h2 className="text-4xl font-bold mb-4">Need Something Similar?</h2>
+        <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
+          LemonLogic builds intelligent automation, business systems, dashboards,
+          and operational platforms tailored to organizational needs.
+        </p>
+        <Link
+          to="/contact"
+          className="inline-block bg-yellow-400 text-black px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition"
+        >
+          Book A Free Consultation
+        </Link>
       </section>
-
+      
+      {/* Adding a bottom spacer to ensure the CTA doesn't touch the bottom of the viewport */}
+      <div className="h-20"></div>
     </div>
   );
 }
