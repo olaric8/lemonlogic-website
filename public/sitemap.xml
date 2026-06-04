@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
     <loc>https://lemonlogicai.com/</loc>
-    <priority>1.0</priority>
+  </url>
+
+  <!-- Portfolio Pages -->
+  <url>
+    <loc>https://lemonlogicai.com/portfolio/gsca</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/portfolio/la-autoworks</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/portfolio/invoice-automation</loc>
+  </url>
+
+  <!-- Static Pages -->
+  <url>
+    <loc>https://lemonlogicai.com/contact</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/blog</loc>
+  </url>
+  
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://lemonlogicai.com/blog/logistics-intelligence-operational-visibility</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/blog/workflow-automation-signs</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/blog/spreadsheets-business-risk</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/blog/automated-invoicing-reduces-administrative-costs</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/blog/operational-intelligence-why-it-matters</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/blog/why-growing-businesses-outgrow-excel</loc>
+  </url>
+  <url>
+    <loc>https://lemonlogicai.com/blog/how-dashboards-improve-executive-decision-making</loc>
   </url>
 
 </urlset>
