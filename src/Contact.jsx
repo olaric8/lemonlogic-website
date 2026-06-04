@@ -20,7 +20,11 @@ export default function Contact() {
       <section className="py-20">
         <div className="max-w-3xl mx-auto px-6">
 
-          <form className="space-y-6">
+          <form
+            action="https://formspree.io/f/xojzqzzv"
+            method="POST"
+            className="space-y-6"
+          >
 
             <div>
               <label className="block mb-2 font-medium">
@@ -29,8 +33,9 @@ export default function Contact() {
 
               <input
                 type="text"
-                className="w-full border border-slate-300 rounded-lg p-4"
+                name="name"
                 placeholder="Your Name"
+                className="w-full border border-slate-300 rounded-lg p-4"
               />
             </div>
 
@@ -41,6 +46,7 @@ export default function Contact() {
 
               <input
                 type="text"
+                name="company"
                 className="w-full border border-slate-300 rounded-lg p-4"
                 placeholder="Company Name"
               />
@@ -53,8 +59,9 @@ export default function Contact() {
 
               <input
                 type="email"
-                className="w-full border border-slate-300 rounded-lg p-4"
+                name="email"
                 placeholder="you@company.com"
+                className="w-full border border-slate-300 rounded-lg p-4"
               />
             </div>
 
@@ -65,16 +72,17 @@ export default function Contact() {
 
               <textarea
                 rows="6"
+                name="message"
+                placeholder="Describe your challenge, workflow, or business process..."
                 className="w-full border border-slate-300 rounded-lg p-4"
-                placeholder="Describe your workflow, challenge, or automation need..."
               />
             </div>
 
             <button
               type="submit"
-              className="bg-yellow-400 hover:bg-yellow-500 px-8 py-4 rounded-lg font-semibold"
+              className="bg-yellow-400 hover:bg-yellow-500 px-8 py-4 rounded-lg font-semibold transition"
             >
-              Submit Inquiry
+              Request Consultation
             </button>
 
           </form>
