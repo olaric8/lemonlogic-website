@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BackToTop from "./components/BackToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Services from "./components/Services";
@@ -18,12 +19,13 @@ export default function Home() {
           </div>
 
           <div className="hidden md:flex gap-8">
-            <a href="#">Home</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
+  <a href="#">Home</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Portfolio</a>
+  <Link to="/blog">Blog</Link>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
         </div>
       </nav>
 
