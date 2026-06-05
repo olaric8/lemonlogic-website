@@ -109,6 +109,11 @@ const articles = {
       { type: "p", text: "Organizations generate enormous amounts of operational data every day. Transactions are processed, services are delivered, reports are generated, and decisions are made across multiple departments." },
       { type: "p", text: "The challenge is not a lack of data. The challenge is turning that data into meaningful insights that support better decision-making." },
       { type: "p", text: "This is where operational intelligence becomes valuable." },
+      {
+        type: "image",
+        src: "/blog-images/operational-intelligence.png",
+        alt: "Operational Intelligence Process Diagram"
+      },
       { type: "h2", text: "What Is Operational Intelligence?" },
       { type: "p", text: "Operational intelligence is the practice of collecting, analyzing, and visualizing operational data to improve business performance and decision-making." },
       { type: "p", text: "Rather than relying solely on historical reports, operational intelligence provides visibility into current activities and performance metrics." },
@@ -179,6 +184,12 @@ const articles = {
       { type: "p", text: "Modern organizations generate vast amounts of data every day. Sales figures, operational metrics, financial reports, customer information, and performance indicators are constantly being produced across multiple systems." },
       { type: "p", text: "The challenge for executives is not access to data. The challenge is transforming that data into meaningful information that supports confident decision-making." },
       { type: "p", text: "This is where dashboards become invaluable." },
+      
+      {
+        type: "image",
+        src: "/blog-images/executive-dashboard.png",
+        alt: "Executive Dashboard Decision Making Diagram",
+      },
       { type: "h2", text: "What Is An Executive Dashboard?" },
       { type: "p", text: "An executive dashboard is a centralized interface that presents critical business information in a clear, visual, and easy-to-understand format." },
       { type: "p", text: "Rather than reviewing multiple spreadsheets, reports, and data sources, leaders can access key performance indicators from a single location." },
@@ -220,15 +231,48 @@ export default function BlogPost() {
   if (!article) return <div className="p-8 text-center">Article Not Found</div>;
 
   return (
-    <section className="container mx-auto px-4 py-12">
-      <h1 className="text-5xl font-bold mb-8">{article.title}</h1>
-      <div className="prose prose-lg max-w-none">
-        {article.content.map((block, index) => 
-          block.type === "h2" ? 
-          <h2 key={index} className="text-2xl font-bold mt-8 mb-4">{block.text}</h2> : 
-          <p key={index} className="mb-4">{block.text}</p>
-        )}
-      </div>
-    </section>
-  );
+  <section className="max-w-4xl mx-auto px-6 py-16">
+    <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+      {article.title}
+    </h1>
+
+    <div className="mb-10 h-1 w-24 bg-yellow-400 rounded-full"></div>
+
+    <div className="max-w-none">
+      {article.content.map((block, index) => {
+        if (block.type === "image") {
+          return (
+            <div key={index} className="my-12">
+              <img
+                src={block.src}
+                alt={block.alt}
+                className="w-full rounded-2xl shadow-xl border border-slate-200"
+              />
+            </div>
+          );
+        }
+
+        if (block.type === "h2") {
+          return (
+            <h2
+              key={index}
+              className="text-3xl font-bold mt-12 mb-6 text-slate-900"
+            >
+              {block.text}
+            </h2>
+          );
+        }
+
+        return (
+          <p
+            key={index}
+            className="mb-6 text-lg leading-8 text-slate-700"
+          >
+            {block.text}
+          </p>
+        );
+      })}
+    </div>
+  </section>
+);
 }
