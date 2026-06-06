@@ -1,11 +1,19 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const articles = {
   "logistics-intelligence-operational-visibility": {
     title: "How Logistics Intelligence Improves Operational Visibility",
+    description: "Learn how logistics intelligence improves operational visibility, supports better decision-making, and helps organizations operate more efficiently.",
     content: [
       { type: "p", text: "In today's business environment, organizations are expected to make faster decisions, deliver better customer experiences, and operate with greater efficiency than ever before." },
       { type: "p", text: "Yet many companies still struggle with one fundamental challenge: a lack of operational visibility." },
+      {
+  type: "image",
+  src: "/blog-images/logistics-intelligence.png",
+  alt: "How Logistics Intelligence Improves Operational Visibility"
+},
       { type: "p", text: "When decision-makers cannot clearly see what is happening across their operations, delays increase, costs rise, and opportunities are missed." },
       { type: "h2", text: "What Is Logistics Intelligence?" },
       { type: "p", text: "Logistics intelligence refers to the collection, analysis, and visualization of operational and logistics-related data to support better decision-making." },
@@ -25,9 +33,15 @@ const articles = {
   },
   "workflow-automation-signs": {
     title: "5 Signs Your Business Needs Workflow Automation",
+    description: "Discover the key signs that your business needs workflow automation and learn how automation improves efficiency, visibility, and scalability.",
     content: [
       { type: "p", text: "Every business develops processes over time. What starts as a simple workflow often becomes increasingly complex as the organization grows." },
       { type: "p", text: "Many businesses continue operating with manual processes long after those processes have become inefficient." },
+      {
+  type: "image",
+  src: "/blog-images/workflow-automation.png",
+  alt: "5 Signs Your Business Needs Workflow Automation"
+},
       { type: "h2", text: "1. Employees Spend Too Much Time On Repetitive Tasks" },
       { type: "p", text: "Repetitive activities such as data entry, report generation, invoice processing, approval tracking, and document management consume significant amounts of time." },
       { type: "p", text: "Workflow automation can eliminate many of these repetitive activities, allowing teams to focus on higher-value responsibilities." },
@@ -49,6 +63,7 @@ const articles = {
   },
   "spreadsheets-business-risk": {
     title: "When Spreadsheets Become a Business Risk",
+    description: "Explore the hidden risks of spreadsheet dependency and learn when growing organizations should transition to dedicated business systems.",
     content: [
       { type: "p", text: "Spreadsheets have been a fundamental business tool for decades. They are flexible, familiar, and capable of handling a wide variety of tasks." },
       { type: "h2", text: "Why Businesses Love Spreadsheets" },
@@ -72,6 +87,7 @@ const articles = {
   },
   "automated-invoicing-reduces-administrative-costs": {
     title: "How Automated Invoicing Reduces Administrative Costs",
+    description: "Learn how automated invoicing reduces administrative costs, improves accuracy, accelerates billing cycles, and supports business growth.",
     content: [
       { type: "p", text: "Invoicing is one of the most important administrative processes in any organization. It directly affects cash flow, customer relationships, financial reporting, and operational efficiency." },
       { type: "p", text: "Despite its importance, many businesses continue to rely on manual invoicing processes that consume valuable time and introduce unnecessary risk." },
@@ -105,15 +121,12 @@ const articles = {
   },
   "operational-intelligence-why-it-matters": {
     title: "What Is Operational Intelligence And Why Does It Matter?",
+    description: "Understand what operational intelligence is, why it matters, and how it helps organizations improve visibility, efficiency, and decision-making.",
     content: [
       { type: "p", text: "Organizations generate enormous amounts of operational data every day. Transactions are processed, services are delivered, reports are generated, and decisions are made across multiple departments." },
       { type: "p", text: "The challenge is not a lack of data. The challenge is turning that data into meaningful insights that support better decision-making." },
       { type: "p", text: "This is where operational intelligence becomes valuable." },
-      {
-        type: "image",
-        src: "/blog-images/operational-intelligence.png",
-        alt: "Operational Intelligence Process Diagram"
-      },
+      { type: "image", src: "/blog-images/operational-intelligence.png", alt: "Operational Intelligence Process Diagram" },
       { type: "h2", text: "What Is Operational Intelligence?" },
       { type: "p", text: "Operational intelligence is the practice of collecting, analyzing, and visualizing operational data to improve business performance and decision-making." },
       { type: "p", text: "Rather than relying solely on historical reports, operational intelligence provides visibility into current activities and performance metrics." },
@@ -145,6 +158,7 @@ const articles = {
   },
   "why-growing-businesses-outgrow-excel": {
     title: "Why Growing Businesses Outgrow Excel",
+    description: "Discover why growing businesses eventually outgrow Excel and how dedicated business systems improve scalability and operational control.",
     content: [
       { type: "p", text: "Excel remains one of the most widely used business tools in the world. It is flexible, accessible, and capable of solving a wide range of business challenges." },
       { type: "p", text: "For startups and small teams, spreadsheets are often the fastest way to organize information, track performance, and manage operations." },
@@ -180,16 +194,12 @@ const articles = {
   },
   "how-dashboards-improve-executive-decision-making": {
     title: "How Dashboards Improve Executive Decision-Making",
+    description: "Learn how executive dashboards provide real-time visibility, strengthen strategic planning, and support data-driven decision-making.",
     content: [
       { type: "p", text: "Modern organizations generate vast amounts of data every day. Sales figures, operational metrics, financial reports, customer information, and performance indicators are constantly being produced across multiple systems." },
       { type: "p", text: "The challenge for executives is not access to data. The challenge is transforming that data into meaningful information that supports confident decision-making." },
       { type: "p", text: "This is where dashboards become invaluable." },
-      
-      {
-        type: "image",
-        src: "/blog-images/executive-dashboard.png",
-        alt: "Executive Dashboard Decision Making Diagram",
-      },
+      { type: "image", src: "/blog-images/executive-dashboard.png", alt: "Executive Dashboard Decision Making Diagram" },
       { type: "h2", text: "What Is An Executive Dashboard?" },
       { type: "p", text: "An executive dashboard is a centralized interface that presents critical business information in a clear, visual, and easy-to-understand format." },
       { type: "p", text: "Rather than reviewing multiple spreadsheets, reports, and data sources, leaders can access key performance indicators from a single location." },
@@ -228,51 +238,70 @@ const articles = {
 export default function BlogPost() {
   const { slug } = useParams();
   const article = articles[slug];
+
+  useEffect(() => {
+    if (article) {
+      document.title = `${article.title} | LemonLogic`;
+    }
+  }, [article]);
+
   if (!article) return <div className="p-8 text-center">Article Not Found</div>;
 
   return (
-  <section className="max-w-4xl mx-auto px-6 py-16">
-    <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-      {article.title}
-    </h1>
+    <section className="max-w-4xl mx-auto px-6 py-16">
+      <Helmet>
+        <title>{article.title} | LemonLogic</title>
+        <meta
+          name="description"
+          content={
+            article.description ||
+            article.content.find((b) => b.type === "p")?.text ||
+            "Business automation, operational intelligence, dashboards, and workflow solutions."
+          }
+        />
+      </Helmet>
 
-    <div className="mb-10 h-1 w-24 bg-yellow-400 rounded-full"></div>
+      <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+        {article.title}
+      </h1>
 
-    <div className="max-w-none">
-      {article.content.map((block, index) => {
-        if (block.type === "image") {
+      <div className="mb-10 h-1 w-24 bg-yellow-400 rounded-full"></div>
+
+      <div className="max-w-none">
+        {article.content.map((block, index) => {
+          if (block.type === "image") {
+            return (
+              <div key={index} className="my-12">
+                <img
+                  src={block.src}
+                  alt={block.alt}
+                  className="w-full rounded-2xl shadow-xl border border-slate-200"
+                />
+              </div>
+            );
+          }
+
+          if (block.type === "h2") {
+            return (
+              <h2
+                key={index}
+                className="text-3xl font-bold mt-12 mb-6 text-slate-900"
+              >
+                {block.text}
+              </h2>
+            );
+          }
+
           return (
-            <div key={index} className="my-12">
-              <img
-                src={block.src}
-                alt={block.alt}
-                className="w-full rounded-2xl shadow-xl border border-slate-200"
-              />
-            </div>
-          );
-        }
-
-        if (block.type === "h2") {
-          return (
-            <h2
+            <p
               key={index}
-              className="text-3xl font-bold mt-12 mb-6 text-slate-900"
+              className="mb-6 text-lg leading-8 text-slate-700"
             >
               {block.text}
-            </h2>
+            </p>
           );
-        }
-
-        return (
-          <p
-            key={index}
-            className="mb-6 text-lg leading-8 text-slate-700"
-          >
-            {block.text}
-          </p>
-        );
-      })}
-    </div>
-  </section>
-);
+        })}
+      </div>
+    </section>
+  );
 }
