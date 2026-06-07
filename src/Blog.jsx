@@ -23,29 +23,39 @@ const posts = [
     readTime: "5 min read",
   },
   {
-  slug: "logistics-intelligence-operational-visibility",
-  title: "How Logistics Intelligence Improves Operational Visibility",
-  excerpt: "Discover how logistics intelligence platforms provide real-time visibility and better decision-making across operations.",
-  image: "/blog-images/logistics-intelligence.png",
-  readTime: "5 min read",
-},
+    slug: "logistics-intelligence-operational-visibility",
+    title: "How Logistics Intelligence Improves Operational Visibility",
+    excerpt: "Discover how logistics intelligence platforms provide real-time visibility and better decision-making across operations.",
+    image: "/blog-images/logistics-intelligence.png",
+    readTime: "5 min read",
+  },
   {
     slug: "spreadsheets-business-risk",
     title: "When Spreadsheets Become a Business Risk",
     excerpt: "Understand the limitations of spreadsheets and when organizations should move to dedicated business systems.",
+    image: "/blog-images/spreadsheets-business-risk.png",
     readTime: "4 min read",
   },
   {
     slug: "automated-invoicing-reduces-administrative-costs",
     title: "How Automated Invoicing Reduces Administrative Costs",
     excerpt: "Explore how invoice automation streamlines financial workflows, improves accuracy, and reduces operational overhead.",
+    image: "/blog-images/automated-invoicing.png",
     readTime: "6 min read",
   },
   {
     slug: "why-growing-businesses-outgrow-excel",
     title: "Why Growing Businesses Outgrow Excel",
     excerpt: "Discover the hidden risks of spreadsheet dependency and learn the signs that indicate your business is ready for a dedicated system.",
+    image: "/blog-images/outgrow-excel.png",
     readTime: "5 min read",
+  },
+  {
+    slug: "hidden-costs-manual-processes",
+    title: "7 Hidden Costs Of Manual Business Processes",
+    excerpt: "Discover the hidden costs of manual business processes and learn how automation improves productivity, visibility, scalability, and customer satisfaction.",
+    image: "/blog-images/hidden-costs-manual-processes.png",
+    readTime: "7 min read",
   },
 ];
 
@@ -137,6 +147,7 @@ export default function Blog() {
                 <p className="mt-3 text-sm text-slate-500">
                   {post.readTime}
                 </p>
+                
                 <div className="mt-auto">
                   <Link
                     to={`/blog/${post.slug}`}

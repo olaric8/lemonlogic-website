@@ -1,7 +1,3 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-
 const articles = {
   "logistics-intelligence-operational-visibility": {
     title: "How Logistics Intelligence Improves Operational Visibility",
@@ -9,11 +5,7 @@ const articles = {
     content: [
       { type: "p", text: "In today's business environment, organizations are expected to make faster decisions, deliver better customer experiences, and operate with greater efficiency than ever before." },
       { type: "p", text: "Yet many companies still struggle with one fundamental challenge: a lack of operational visibility." },
-      {
-  type: "image",
-  src: "/blog-images/logistics-intelligence.png",
-  alt: "How Logistics Intelligence Improves Operational Visibility"
-},
+      { type: "image", src: "/blog-images/logistics-intelligence.png", alt: "How Logistics Intelligence Improves Operational Visibility" },
       { type: "p", text: "When decision-makers cannot clearly see what is happening across their operations, delays increase, costs rise, and opportunities are missed." },
       { type: "h2", text: "What Is Logistics Intelligence?" },
       { type: "p", text: "Logistics intelligence refers to the collection, analysis, and visualization of operational and logistics-related data to support better decision-making." },
@@ -37,11 +29,7 @@ const articles = {
     content: [
       { type: "p", text: "Every business develops processes over time. What starts as a simple workflow often becomes increasingly complex as the organization grows." },
       { type: "p", text: "Many businesses continue operating with manual processes long after those processes have become inefficient." },
-      {
-  type: "image",
-  src: "/blog-images/workflow-automation.png",
-  alt: "5 Signs Your Business Needs Workflow Automation"
-},
+      { type: "image", src: "/blog-images/workflow-automation.png", alt: "5 Signs Your Business Needs Workflow Automation" },
       { type: "h2", text: "1. Employees Spend Too Much Time On Repetitive Tasks" },
       { type: "p", text: "Repetitive activities such as data entry, report generation, invoice processing, approval tracking, and document management consume significant amounts of time." },
       { type: "p", text: "Workflow automation can eliminate many of these repetitive activities, allowing teams to focus on higher-value responsibilities." },
@@ -66,6 +54,8 @@ const articles = {
     description: "Explore the hidden risks of spreadsheet dependency and learn when growing organizations should transition to dedicated business systems.",
     content: [
       { type: "p", text: "Spreadsheets have been a fundamental business tool for decades. They are flexible, familiar, and capable of handling a wide variety of tasks." },
+      { type: "p", text: "As operational complexity increases, spreadsheets often become increasingly difficult to manage." },
+      { type: "image", src: "/blog-images/spreadsheets-business-risk.png", alt: "When Spreadsheets Become a Business Risk" },
       { type: "h2", text: "Why Businesses Love Spreadsheets" },
       { type: "p", text: "Spreadsheets are popular because they are easy to use, widely available, flexible, low cost, and familiar to employees." },
       { type: "h2", text: "The Hidden Risks Of Spreadsheet Dependency" },
@@ -91,6 +81,7 @@ const articles = {
     content: [
       { type: "p", text: "Invoicing is one of the most important administrative processes in any organization. It directly affects cash flow, customer relationships, financial reporting, and operational efficiency." },
       { type: "p", text: "Despite its importance, many businesses continue to rely on manual invoicing processes that consume valuable time and introduce unnecessary risk." },
+      { type: "image", src: "/blog-images/automated-invoicing.png", alt: "How Automated Invoicing Reduces Administrative Costs" },
       { type: "h2", text: "The Problem With Manual Invoicing" },
       { type: "p", text: "Manual invoicing often involves creating invoices by hand, copying information from multiple sources, tracking payments manually, and maintaining separate records across spreadsheets and accounting systems." },
       { type: "p", text: "As transaction volumes increase, these processes become increasingly difficult to manage." },
@@ -163,6 +154,7 @@ const articles = {
       { type: "p", text: "Excel remains one of the most widely used business tools in the world. It is flexible, accessible, and capable of solving a wide range of business challenges." },
       { type: "p", text: "For startups and small teams, spreadsheets are often the fastest way to organize information, track performance, and manage operations." },
       { type: "p", text: "However, as organizations grow, many discover that the same spreadsheets that once improved productivity are now slowing the business down." },
+      { type: "image", src: "/blog-images/outgrow-excel.png", alt: "Why Growing Businesses Outgrow Excel" },
       { type: "h2", text: "Excel Was Never Designed To Run An Entire Business" },
       { type: "p", text: "Spreadsheets are excellent for calculations, analysis, and temporary data management. They are not designed to function as complete operational systems." },
       { type: "p", text: "As departments expand and processes become more complex, spreadsheets often become difficult to maintain and manage effectively." },
@@ -233,75 +225,35 @@ const articles = {
       { type: "p", text: "At LemonLogic, we design executive dashboards, operational intelligence platforms, and business systems that transform complex information into actionable insights." },
     ],
   },
+  "hidden-costs-manual-processes": {
+    title: "7 Hidden Costs Of Manual Business Processes",
+    description: "Explore the hidden costs of manual business processes, from lost productivity to reduced scalability, and why automation is essential for growth.",
+    content: [
+      { type: "p", text: "In many organizations, manual processes are accepted as a normal part of daily operations. Employees update spreadsheets, send emails, create reports, transfer information between systems, and perform repetitive administrative tasks every day." },
+      { type: "p", text: "While these activities may seem manageable individually, their cumulative impact can be significant. Manual processes often create hidden costs that reduce efficiency, increase risk, and limit business growth." },
+      { type: "p", text: "Organizations that recognize these hidden costs are often the first to embrace automation and operational intelligence solutions that improve productivity and support better decision-making." },
+      { type: "image", src: "/blog-images/hidden-costs-manual-processes.png", alt: "7 Hidden Costs Of Manual Business Processes" },
+      { type: "h2", text: "1. Lost Employee Productivity" },
+      { type: "p", text: "One of the most obvious costs of manual processes is the amount of time employees spend on repetitive tasks. Activities such as data entry, invoice creation, report preparation, information gathering, and manual approvals consume valuable working hours that could be spent on higher-value activities. When skilled employees spend large portions of their day performing routine administrative work, organizations fail to maximize the value of their workforce." },
+      { type: "h2", text: "2. Increased Risk Of Human Error" },
+      { type: "p", text: "Manual processes are highly dependent on human accuracy. Typing mistakes, duplicate entries, incorrect calculations, and missing information can create operational disruptions and financial losses. As businesses grow and transaction volumes increase, the likelihood of errors also increases. Automation helps standardize processes and reduce the risk of costly mistakes." },
+      { type: "h2", text: "3. Delayed Decision-Making" },
+      { type: "p", text: "Business leaders depend on accurate information to make effective decisions. When data must be manually collected, consolidated, and analyzed, reporting becomes slower and less reliable. Decision-makers may find themselves acting on outdated information rather than real-time insights. Organizations with automated reporting and operational intelligence platforms gain access to timely information that supports faster and more confident decisions." },
+      { type: "h2", text: "4. Limited Operational Visibility" },
+      { type: "p", text: "Manual processes often create information silos. Data may exist in spreadsheets, emails, paper records, and disconnected software systems. Without a centralized view of operations, leaders struggle to understand performance, identify trends, and respond to emerging issues. Operational visibility is essential for maintaining control and improving business performance." },
+      { type: "h2", text: "5. Higher Administrative Costs" },
+      { type: "p", text: "Every manual task requires labor. The more time employees spend performing repetitive activities, the higher the operational cost of delivering products and services. These costs often remain hidden because they are distributed across multiple departments and teams. Automation reduces administrative overhead by eliminating repetitive tasks and streamlining workflows." },
+      { type: "h2", text: "6. Poor Scalability" },
+      { type: "p", text: "Manual processes may function adequately when a business is small, but they become increasingly difficult to manage as operations expand. Additional customers, transactions, employees, and locations create greater complexity. Without automation, organizations often respond by hiring additional administrative staff, which increases costs and reduces efficiency. Scalable systems allow businesses to grow without proportionally increasing operational overhead." },
+      { type: "h2", text: "7. Reduced Customer Satisfaction" },
+      { type: "p", text: "Customers expect timely communication, accurate information, and fast service. Manual processes can lead to delays, missed follow-ups, inaccurate records, and inconsistent customer experiences. These issues can negatively impact customer trust and loyalty. Organizations that automate critical workflows often deliver more consistent and responsive customer experiences." },
+      { type: "h2", text: "Moving Beyond Manual Processes" },
+      { type: "p", text: "Modern organizations are increasingly adopting automation platforms, operational intelligence solutions, and centralized business systems to eliminate inefficiencies and improve performance. By reducing manual work, organizations can improve visibility, accelerate decision-making, reduce costs, and create a stronger foundation for sustainable growth." },
+      { type: "h2", text: "Final Thoughts" },
+      { type: "p", text: "Manual processes may feel familiar, but familiarity does not equal efficiency. The organizations that gain a competitive advantage are often those that identify operational bottlenecks early and invest in smarter systems that support scalability, visibility, and better decision-making." },
+      { type: "p", text: "The question is no longer whether automation creates value. The question is how much hidden value remains trapped within your existing processes." },
+    ],
+  },
 };
 
-export default function BlogPost() {
-  const { slug } = useParams();
-  const article = articles[slug];
-
-  useEffect(() => {
-    if (article) {
-      document.title = `${article.title} | LemonLogic`;
-    }
-  }, [article]);
-
-  if (!article) return <div className="p-8 text-center">Article Not Found</div>;
-
-  return (
-    <section className="max-w-4xl mx-auto px-6 py-16">
-      <Helmet>
-        <title>{article.title} | LemonLogic</title>
-        <meta
-          name="description"
-          content={
-            article.description ||
-            article.content.find((b) => b.type === "p")?.text ||
-            "Business automation, operational intelligence, dashboards, and workflow solutions."
-          }
-        />
-      </Helmet>
-
-      <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-        {article.title}
-      </h1>
-
-      <div className="mb-10 h-1 w-24 bg-yellow-400 rounded-full"></div>
-
-      <div className="max-w-none">
-        {article.content.map((block, index) => {
-          if (block.type === "image") {
-            return (
-              <div key={index} className="my-12">
-                <img
-                  src={block.src}
-                  alt={block.alt}
-                  className="w-full rounded-2xl shadow-xl border border-slate-200"
-                />
-              </div>
-            );
-          }
-
-          if (block.type === "h2") {
-            return (
-              <h2
-                key={index}
-                className="text-3xl font-bold mt-12 mb-6 text-slate-900"
-              >
-                {block.text}
-              </h2>
-            );
-          }
-
-          return (
-            <p
-              key={index}
-              className="mb-6 text-lg leading-8 text-slate-700"
-            >
-              {block.text}
-            </p>
-          );
-        })}
-      </div>
-    </section>
-  );
-}
+export default articles;
