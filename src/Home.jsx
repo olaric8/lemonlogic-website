@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BackToTop from "./components/BackToTop";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Services from "./components/Services";
 import Portfolio from "./components/Portfolio";
@@ -205,7 +204,7 @@ export default function Home() {
       <CTA />
       <Footer />
       <WhatsAppButton />
-      <BackToTop />
+      
     </div>
   );
 }

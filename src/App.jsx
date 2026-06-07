@@ -1,3 +1,4 @@
+import BackToTop from "./components/BackToTop";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Contact from "./Contact";
@@ -26,6 +27,7 @@ export default function App() {
         {/* Catch-all route for 404s */}
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
+      <BackToTop />
     </BrowserRouter>
   );
 }
