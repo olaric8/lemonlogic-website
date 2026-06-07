@@ -57,6 +57,13 @@ const posts = [
     image: "/blog-images/hidden-costs-manual-processes.png",
     readTime: "7 min read",
   },
+  {
+    slug: "lemonlogic-automation-maturity-model",
+    title: "The LemonLogic Automation Maturity Model: 5 Signs Your Business Has Outgrown Its Current Systems",
+    excerpt: "Discover the LemonLogic Automation Maturity Model, a proprietary framework that helps organizations identify operational bottlenecks, improve visibility, and scale intelligently.",
+    image: "/blog-images/lemonlogic-automation-maturity-model.png",
+    readTime: "8 min read",
+  },
 ];
 
 const FEATURED_SLUG = "how-dashboards-improve-executive-decision-making";
