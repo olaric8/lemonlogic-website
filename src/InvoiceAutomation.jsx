@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-export default function InvoiceAutomation() {
+export default function LAAutoworks() {
   return (
     <div className="min-h-screen bg-white text-slate-800">
       <Helmet>
         <title>
-          Invoice Automation System | LemonLogic Portfolio
+          LA Autoworks Business Management System | LemonLogic Portfolio
         </title>
 
         <meta
           name="description"
-          content="Discover how LemonLogic automates invoice generation, document management, customer records, and administrative workflows."
+          content="See how LemonLogic developed a business management solution for LA Autoworks to streamline operations, improve visibility, and support business growth."
         />
       </Helmet>
 
@@ -22,12 +22,13 @@ export default function InvoiceAutomation() {
             Case Study
           </span>
           <h1 className="mt-8 text-5xl md:text-7xl font-black">
-            INVOICE AUTOMATION
+            LA AUTOWORKS LTD
           </h1>
           <p className="mt-8 max-w-4xl text-xl text-slate-300">
-            Intelligent financial automation platform designed to streamline 
-            billing workflows, reduce manual data entry, and accelerate 
-            payment cycles for enterprise operations.
+            Premium automotive service platform designed to showcase
+            advanced diagnostics, fleet maintenance expertise,
+            vehicle restoration capabilities, and customer engagement
+            workflows.
           </p>
         </div>
       </section>
@@ -37,11 +38,11 @@ export default function InvoiceAutomation() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-8">Project Overview</h2>
           <p className="text-lg text-slate-600 leading-relaxed">
-            The Invoice Automation project was developed to eliminate bottlenecks 
-            in financial processing. By replacing manual, error-prone invoicing 
-            with an automated system, the platform provides real-time tracking, 
-            seamless integration with existing accounting software, and improved 
-            financial visibility for stakeholders.
+            LA AUTOWORKS required a modern digital platform capable
+            of presenting premium automotive services, showcasing
+            workshop capabilities, supporting customer enquiries,
+            and strengthening credibility among both individual
+            vehicle owners and commercial fleet operators.
           </p>
         </div>
       </section>
@@ -52,16 +53,16 @@ export default function InvoiceAutomation() {
           <h2 className="text-4xl font-bold mb-12">The Challenge</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow">
-              High volume of manual invoice generation and processing errors.
+              Present specialized automotive expertise online.
             </div>
             <div className="bg-white p-8 rounded-2xl shadow">
-              Delayed payment cycles impacting operational cash flow.
+              Improve customer trust and workshop visibility.
             </div>
             <div className="bg-white p-8 rounded-2xl shadow">
-              Fragmented data silos between billing and customer management.
+              Showcase restoration and repair capabilities.
             </div>
             <div className="bg-white p-8 rounded-2xl shadow">
-              Lack of real-time visibility into outstanding receivables.
+              Support customer enquiries and fleet opportunities.
             </div>
           </div>
         </div>
@@ -73,15 +74,15 @@ export default function InvoiceAutomation() {
           <h2 className="text-4xl font-bold mb-12">Solution Delivered</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              "Automated Invoice Generation",
-              "Custom Workflow Integration",
-              "Real-time Payment Tracking",
-              "Dynamic Reporting Dashboards",
-              "Multi-Format Export Options",
-              "Error-Reduction Logic",
-              "Scalable API Architecture",
-              "Secure Audit Trails",
-              "Automated Client Notifications"
+              "Service Booking Experience",
+              "WhatsApp Integration",
+              "Interactive Workshop Gallery",
+              "Fleet Maintenance Presentation",
+              "Vehicle Restoration Showcases",
+              "Workshop Location Mapping",
+              "Responsive Mobile Design",
+              "Customer Contact Workflows",
+              "Professional Brand Positioning"
             ].map((item) => (
               <div
                 key={item}
@@ -94,28 +95,28 @@ export default function InvoiceAutomation() {
         </div>
       </section>
 
-      {/* CORE FEATURES */}
+      {/* SERVICES */}
       <section className="py-24 bg-slate-100">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-12">Key System Capabilities</h2>
+          <h2 className="text-4xl font-bold mb-12">Specialized Services Highlighted</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow">
-              Smart Data Parsing & Validation
+              Premium Automotive Computer Diagnostics
             </div>
             <div className="bg-white p-8 rounded-2xl shadow">
-              Automated Follow-up & Reminder Systems
+              Heavy Multi-Plate Powertrain Overhauling
             </div>
             <div className="bg-white p-8 rounded-2xl shadow">
-              Enterprise-Grade Data Encryption
+              Dust-Free Paint Oven Baking Restorations
             </div>
             <div className="bg-white p-8 rounded-2xl shadow">
-              Custom Tax & Regulatory Compliance Logic
+              Suspension & Track Alignment Strengthening
             </div>
             <div className="bg-white p-8 rounded-2xl shadow">
-              ERP & CRM Data Synchronization
+              Toyota & Nissan Specialist Repairs
             </div>
             <div className="bg-white p-8 rounded-2xl shadow">
-              Performance Analytics & Forecasting
+              Commercial Fleet Maintenance Networks
             </div>
           </div>
         </div>
@@ -128,11 +129,11 @@ export default function InvoiceAutomation() {
           <div className="flex flex-wrap gap-4">
             {[
               "React",
-              "Node.js",
-              "PostgreSQL",
-              "TypeScript",
+              "Vite",
+              "Netlify",
+              "Responsive Design",
               "Tailwind CSS",
-              "Cloud Automation"
+              "Business Website"
             ].map((tech) => (
               <span
                 key={tech}
@@ -150,28 +151,26 @@ export default function InvoiceAutomation() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12">Business Outcomes</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow">Significant Reduction in Processing Time</div>
-            <div className="bg-white p-8 rounded-2xl shadow">Higher Billing Accuracy Rate</div>
-            <div className="bg-white p-8 rounded-2xl shadow">Improved Cash Flow Velocity</div>
-            <div className="bg-white p-8 rounded-2xl shadow">Seamless Compliance & Auditing</div>
-            <div className="bg-white p-8 rounded-2xl shadow">Better Client Relationship Management</div>
-            <div className="bg-white p-8 rounded-2xl shadow">Scalability for Growing Transaction Volumes</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Improved Online Visibility</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Stronger Brand Credibility</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Better Customer Engagement</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Enhanced Mobile Accessibility</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Simplified Customer Enquiries</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Improved Fleet Service Positioning</div>
           </div>
         </div>
       </section>
 
       {/* Conversion CTA */}
       <section className="mt-20 mx-6 md:mx-auto max-w-5xl rounded-2xl bg-slate-900 text-white p-12 text-center">
-        <h2 className="text-4xl font-bold mb-4">Need Something Similar?</h2>
-        <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
-          LemonLogic builds intelligent automation, business systems, dashboards,
-          and operational platforms tailored to organizational needs.
-        </p>
+        <h2 className="text-3xl font-bold mb-8">
+          Interested in a similar solution for your business?
+        </h2>
         <Link
           to="/contact"
-          className="inline-block bg-red-600 text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition"
+          className="inline-block bg-red-600 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-red-700 transition-all transform hover:scale-105"
         >
-          Book A Free Consultation
+          Request a Consultation
         </Link>
       </section>
       

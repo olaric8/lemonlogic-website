@@ -1,4 +1,5 @@
 
+import Assessment from "./Assessment";
 import BackToTop from "./components/BackToTop";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
@@ -23,6 +24,11 @@ export default function App() {
         <Route path="/portfolio/la-autoworks" element={<LAAutoworks />} />
         <Route path="/portfolio/invoice-automation" element={<InvoiceAutomation />} />
         
+<Route
+  path="/assessment"
+  element={<Assessment />}
+/>
+
         {/* Blog Routes */}
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />

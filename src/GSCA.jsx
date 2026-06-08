@@ -183,16 +183,14 @@ export default function GSCA() {
 
       {/* Conversion CTA */}
       <section className="mt-20 mx-6 md:mx-auto max-w-5xl rounded-2xl bg-slate-900 text-white p-12 text-center">
-        <h2 className="text-4xl font-bold mb-4">Need Something Similar?</h2>
-        <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
-          LemonLogic builds intelligent automation, business systems, dashboards,
-          and operational platforms tailored to organizational needs.
-        </p>
+        <h2 className="text-3xl font-bold mb-8">
+          Interested in a similar solution for your business?
+        </h2>
         <Link
           to="/contact"
-          className="inline-block bg-yellow-400 text-black px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition"
+          className="inline-block bg-yellow-400 text-slate-900 px-10 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-500 transition-all transform hover:scale-105"
         >
-          Book A Free Consultation
+          Request a Consultation
         </Link>
       </section>
       
