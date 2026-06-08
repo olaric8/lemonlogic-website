@@ -20,7 +20,7 @@ export default function Assessment() {
 
   const handleChange = (index, value) => {
     const updated = [...answers];
-    updated[index] = value; // Keep as string to handle empty state
+    updated[index] = value;
     setAnswers(updated);
   };
 
@@ -28,11 +28,64 @@ export default function Assessment() {
   const score = answers.reduce((total, value) => total + (Number(value) || 0), 0);
 
   const getResult = () => {
-    if (score <= 6) return { level: "Level 1 – Reactive", description: "Your organization relies heavily on manual processes and has significant opportunities for automation." };
-    if (score <= 12) return { level: "Level 2 – Emerging", description: "Some processes are digitized, but automation and visibility remain limited." };
-    if (score <= 18) return { level: "Level 3 – Structured", description: "Your organization has established processes and is beginning to benefit from automation." };
-    if (score <= 24) return { level: "Level 4 – Optimized", description: "Strong operational visibility and automation capabilities support efficient operations." };
-    return { level: "Level 5 – Intelligent Enterprise", description: "Your organization demonstrates advanced operational intelligence and data-driven decision making." };
+    if (score <= 6) {
+      return {
+        level: "Level 1 – Reactive",
+        description: "Your organization relies heavily on manual processes and has significant opportunities for automation.",
+        recommendations: [
+          "Reduce spreadsheet dependency",
+          "Document key business processes",
+          "Introduce workflow automation",
+          "Improve operational visibility"
+        ]
+      };
+    }
+    if (score <= 12) {
+      return {
+        level: "Level 2 – Emerging",
+        description: "Some processes are digitized, but automation and visibility remain limited.",
+        recommendations: [
+          "Standardize operational workflows",
+          "Automate repetitive administrative tasks",
+          "Improve reporting processes",
+          "Create centralized business data sources"
+        ]
+      };
+    }
+    if (score <= 18) {
+      return {
+        level: "Level 3 – Structured",
+        description: "Your organization has established processes and is beginning to benefit from automation.",
+        recommendations: [
+          "Implement executive dashboards",
+          "Improve workflow tracking",
+          "Increase process automation",
+          "Enhance operational reporting"
+        ]
+      };
+    }
+    if (score <= 24) {
+      return {
+        level: "Level 4 – Optimized",
+        description: "Strong operational visibility and automation capabilities support efficient operations.",
+        recommendations: [
+          "Expand operational intelligence initiatives",
+          "Integrate business systems",
+          "Improve predictive reporting",
+          "Strengthen data-driven decision making"
+        ]
+      };
+    }
+    return {
+      level: "Level 5 – Intelligent Enterprise",
+      description: "Your organization demonstrates advanced operational intelligence and data-driven decision making.",
+      recommendations: [
+        "Explore advanced analytics",
+        "Leverage AI-assisted decision support",
+        "Continuously optimize business processes",
+        "Scale automation across departments"
+      ]
+    };
   };
 
   const result = getResult();
@@ -91,6 +144,26 @@ export default function Assessment() {
               <h2 className="text-4xl font-bold mb-4">Your Score: {score} / 30</h2>
               <h3 className="text-2xl font-semibold mb-4 text-yellow-600">{result.level}</h3>
               <p className="text-slate-700 mb-8 text-lg">{result.description}</p>
+
+              {/* Recommended Priorities Section */}
+              <div className="mb-8">
+                <h4 className="text-xl font-bold mb-4">
+                  Recommended Priorities
+                </h4>
+                <ul className="space-y-3">
+                  {result.recommendations.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center"
+                    >
+                      <span className="text-yellow-500 mr-3">
+                        ✓
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               <div className="bg-white border rounded-xl p-6 shadow-sm">
                 <h4 className="text-xl font-bold mb-4">Next Step</h4>

@@ -33,6 +33,7 @@ export default function Home() {
             <a href="#">Home</a>
             <a href="#services">Services</a>
             <a href="#portfolio">Portfolio</a>
+            <Link to="/assessment">Assessment</Link>
             <Link to="/blog">Blog</Link>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
@@ -115,6 +116,26 @@ export default function Home() {
               <div className="text-gray-600 mt-2">Deployment Ready</div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Automation Readiness Assessment */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold mb-6">
+            Assess Your Automation Readiness
+          </h2>
+          <p className="text-xl text-slate-300 mb-10">
+            Take the LemonLogic Automation Readiness Assessment to discover
+            opportunities to improve efficiency, operational visibility,
+            workflow automation, and business performance.
+          </p>
+          <Link
+            to="/assessment"
+            className="inline-block bg-yellow-400 hover:bg-yellow-500 text-slate-900 px-8 py-4 rounded-lg font-semibold text-lg transition"
+          >
+            Start My Assessment
+          </Link>
         </div>
       </section>
 
