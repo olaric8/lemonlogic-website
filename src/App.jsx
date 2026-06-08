@@ -1,3 +1,4 @@
+
 import BackToTop from "./components/BackToTop";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
@@ -10,6 +11,8 @@ import BlogPost from "./BlogPost.jsx";
 
 export default function App() {
   return (
+  
+    
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />

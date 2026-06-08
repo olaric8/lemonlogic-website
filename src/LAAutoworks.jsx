@@ -1,8 +1,20 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export default function LAAutoworks() {
   return (
     <div className="min-h-screen bg-white text-slate-800">
+      <Helmet>
+        <title>
+          LA Autoworks Business Management System | LemonLogic Portfolio
+        </title>
+
+        <meta
+          name="description"
+          content="See how LemonLogic developed a business management solution for LA Autoworks to streamline operations, improve visibility, and support business growth."
+        />
+      </Helmet>
+
       {/* HERO */}
       <section className="bg-gradient-to-br from-red-900 via-black to-red-950 text-white py-24">
         <div className="max-w-6xl mx-auto px-6">
@@ -74,7 +86,7 @@ export default function LAAutoworks() {
             ].map((item) => (
               <div
                 key={item}
-                className="border border-slate-200 rounded-2xl p-8"
+                className="border border-slate-200 rounded-2xl p-8 hover:border-red-500 transition-colors"
               >
                 {item}
               </div>
@@ -125,7 +137,7 @@ export default function LAAutoworks() {
             ].map((tech) => (
               <span
                 key={tech}
-                className="px-5 py-2 border border-red-300 rounded-full"
+                className="px-5 py-2 border border-red-300 rounded-full bg-red-50/50"
               >
                 {tech}
               </span>
@@ -139,24 +151,12 @@ export default function LAAutoworks() {
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12">Business Outcomes</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow">
-              Improved Online Visibility
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow">
-              Stronger Brand Credibility
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow">
-              Better Customer Engagement
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow">
-              Enhanced Mobile Accessibility
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow">
-              Simplified Customer Enquiries
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow">
-              Improved Fleet Service Positioning
-            </div>
+            <div className="bg-white p-8 rounded-2xl shadow">Improved Online Visibility</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Stronger Brand Credibility</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Better Customer Engagement</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Enhanced Mobile Accessibility</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Simplified Customer Enquiries</div>
+            <div className="bg-white p-8 rounded-2xl shadow">Improved Fleet Service Positioning</div>
           </div>
         </div>
       </section>
@@ -175,8 +175,7 @@ export default function LAAutoworks() {
           Book A Free Consultation
         </Link>
       </section>
-
-      {/* Bottom spacer */}
+      
       <div className="h-20"></div>
     </div>
   );

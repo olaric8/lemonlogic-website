@@ -1,7 +1,20 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+
 export default function GSCA() {
   return (
     <div className="min-h-screen bg-white text-slate-800">
+      <Helmet>
+        <title>
+          GSCA Logistics Intelligence Platform | LemonLogic Portfolio
+        </title>
+
+        <meta
+          name="description"
+          content="Explore GSCA, a logistics intelligence platform featuring GIS mapping, boundary intelligence, enterprise dashboards, notifications, audit logs, and operational visibility."
+        />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="bg-slate-900 text-white py-24">
         <div className="max-w-5xl mx-auto px-6">
@@ -183,7 +196,6 @@ export default function GSCA() {
         </Link>
       </section>
       
-      {/* Adding a bottom spacer to ensure the CTA doesn't touch the bottom of the viewport */}
       <div className="h-20"></div>
     </div>
   );

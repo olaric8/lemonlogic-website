@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Services from "./components/Services";
@@ -9,6 +10,17 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <div className="py-24 bg-white text-slate-800">
+      <Helmet>
+        <title>
+          LemonLogic | Intelligent Automation & Business Systems
+        </title>
+
+        <meta
+          name="description"
+          content="LemonLogic helps organizations streamline operations through intelligent automation, dashboards, workflow optimization, operational intelligence, and custom business systems."
+        />
+      </Helmet>
+
       <nav className="border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
@@ -18,13 +30,13 @@ export default function Home() {
           </div>
 
           <div className="hidden md:flex gap-8">
-  <a href="#">Home</a>
-  <a href="#services">Services</a>
-  <a href="#portfolio">Portfolio</a>
-  <Link to="/blog">Blog</Link>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-</div>
+            <a href="#">Home</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <Link to="/blog">Blog</Link>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
         </div>
       </nav>
 
@@ -107,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* Why Businesses Choose LemonLogic */}
-<section id="about" className="py-20 bg-white">
+      <section id="about" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">Why Businesses Choose LemonLogic</h2>
@@ -204,7 +216,6 @@ export default function Home() {
       <CTA />
       <Footer />
       <WhatsAppButton />
-      
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const posts = [
@@ -74,6 +75,14 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Business Automation Insights | LemonLogic</title>
+        <meta
+          name="description"
+          content="Explore practical insights on business automation, operational intelligence, dashboards, workflow optimization, and digital transformation."
+        />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="bg-slate-900 text-white py-24">
         <div className="max-w-5xl mx-auto px-6 text-center">

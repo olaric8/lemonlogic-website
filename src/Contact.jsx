@@ -1,8 +1,20 @@
 import React from "react";
-
+import { Helmet } from "react-helmet-async";
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-white text-slate-800">
+    <>
+      <Helmet>
+        <title>
+          Contact LemonLogic | Intelligent Automation Solutions
+        </title>
+
+        <meta
+          name="description"
+          content="Contact LemonLogic to discuss automation, operational intelligence, dashboards, workflow optimization, and custom business systems."
+        />
+      </Helmet>
+
+      <div className="min-h-screen bg-white text-slate-800">
 
       <section className="bg-slate-900 text-white py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -106,5 +118,6 @@ export default function Contact() {
       </section>
 
     </div>
+    </>
   );
 }
