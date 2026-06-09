@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
@@ -80,16 +80,29 @@ const posts = [
     image: "/blog-images/manual-process-costs-business.png",
     readTime: "8 min read",
   },
+  {
+    slug: "executive-dashboards-what-ceos-need-to-see",
+    title: "Executive Dashboards: What CEOs Actually Need To See",
+    excerpt: "Discover the key metrics, insights, and operational visibility leaders need to make faster, more informed business decisions.",
+    image: "/blog-images/executive-dashboards-ceo.png",
+    readTime: "8 min read",
+  },
 ];
 
 const FEATURED_SLUG = "executive-guide-automation-readiness";
+const POSTS_PER_PAGE = 6;
 
 export default function Blog() {
+  const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
+
   const { featuredPost, remainingPosts } = useMemo(() => {
     const featured = posts.find((p) => p.slug === FEATURED_SLUG);
     const remaining = posts.filter((p) => p.slug !== FEATURED_SLUG);
     return { featuredPost: featured, remainingPosts: remaining };
   }, []);
+
+  const displayedPosts = remainingPosts.slice(0, visibleCount);
+  const hasMore = visibleCount < remainingPosts.length;
 
   return (
     <div className="min-h-screen bg-white">
@@ -155,7 +168,7 @@ export default function Blog() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {remainingPosts.map((post) => (
+          {displayedPosts.map((post) => (
             <article
               key={post.slug}
               className="flex flex-col border border-slate-200 rounded-2xl overflow-hidden bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -196,6 +209,18 @@ export default function Blog() {
             </article>
           ))}
         </div>
+
+        {/* Load More Button */}
+        {hasMore && (
+          <div className="max-w-7xl mx-auto px-6 mt-12 text-center">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 3)}
+              className="bg-slate-900 text-white px-8 py-3 rounded-xl font-semibold hover:bg-slate-800 transition"
+            >
+              Load More Articles
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );
