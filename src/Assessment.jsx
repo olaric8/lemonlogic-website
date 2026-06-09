@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 
 const questions = [
@@ -31,96 +31,43 @@ export default function Assessment() {
   const progress = (answeredCount / questions.length) * 100;
   const score = answers.reduce((total, value) => total + (Number(value) || 0), 0);
 
-  const getResult = () => {
+  const result = useMemo(() => {
     if (score <= 6) return { level: "Level 1 – Reactive", description: "Your organization relies heavily on manual processes and has significant opportunities for automation.", recommendations: ["Reduce spreadsheet dependency", "Document key business processes", "Introduce workflow automation", "Improve operational visibility"] };
     if (score <= 12) return { level: "Level 2 – Emerging", description: "Some processes are digitized, but automation and visibility remain limited.", recommendations: ["Standardize operational workflows", "Automate repetitive administrative tasks", "Improve reporting processes", "Create centralized business data sources"] };
     if (score <= 18) return { level: "Level 3 – Structured", description: "Your organization has established processes and is beginning to benefit from automation.", recommendations: ["Implement executive dashboards", "Improve workflow tracking", "Increase process automation", "Enhance operational reporting"] };
     if (score <= 24) return { level: "Level 4 – Optimized", description: "Strong operational visibility and automation capabilities support efficient operations.", recommendations: ["Expand operational intelligence initiatives", "Integrate business systems", "Improve predictive reporting", "Strengthen data-driven decision making"] };
     return { level: "Level 5 – Intelligent Enterprise", description: "Your organization demonstrates advanced operational intelligence and data-driven decision making.", recommendations: ["Explore advanced analytics", "Leverage AI-assisted decision support", "Continuously optimize business processes", "Scale automation across departments"] };
-  };
+  }, [score]);
 
-  const readinessPercentage = Math.round((score / 30) * 100);
-
-  const getReadinessLabel = () => {
-    if (readinessPercentage <= 20) return "Critical Modernization Needed";
-    if (readinessPercentage <= 40) return "Early Automation Journey";
-    if (readinessPercentage <= 60) return "Developing Operational Excellence";
-    if (readinessPercentage <= 80) return "High Operational Maturity";
-    return "Intelligent Enterprise";
-  };
+  useEffect(() => {
+    setAdvisorResponse("");
+  }, [score, submitted]);
 
   const getAdvisorResponse = () => {
     if (!challenge.trim()) {
       setAdvisorResponse("Please describe your operational challenge.");
       return;
     }
-
     const challengeText = challenge.toLowerCase();
-
-    // Keyword-based advisor checks
-    if (
-      challengeText.includes("excel") ||
-      challengeText.includes("spreadsheet") ||
-      challengeText.includes("report")
-    ) {
-      setAdvisorResponse(
-        `Based on your ${result.level} assessment, spreadsheet-driven operations may be limiting operational visibility and slowing reporting. Consider centralized dashboards, automated reporting workflows, and operational intelligence tools to improve decision-making.`
-      );
-      return;
+    
+    // Updated Confidence Language
+    const basePhrase = "Based on your assessment results, the most immediate opportunity for operational improvement appears to be";
+    
+    if (challengeText.includes("excel") || challengeText.includes("spreadsheet") || challengeText.includes("report")) {
+      setAdvisorResponse(`${basePhrase} centralizing your data into a unified dashboard to eliminate the need for manual spreadsheet reporting.`);
+    } else if (challengeText.includes("inventory") || challengeText.includes("stock") || challengeText.includes("warehouse")) {
+      setAdvisorResponse(`${basePhrase} the implementation of automated stock tracking to provide real-time inventory visibility.`);
+    } else {
+      setAdvisorResponse(`${basePhrase} the standardization of your workflows, followed by targeted automation to reduce manual overhead.`);
     }
-
-    if (
-      challengeText.includes("inventory") ||
-      challengeText.includes("stock") ||
-      challengeText.includes("warehouse")
-    ) {
-      setAdvisorResponse(
-        `Inventory visibility appears to be a challenge. Based on your ${result.level} assessment, improving inventory reporting, stock monitoring dashboards, and workflow automation could significantly improve operational visibility and decision-making.`
-      );
-      return;
-    }
-
-    if (
-      challengeText.includes("approval") ||
-      challengeText.includes("approval process")
-    ) {
-      setAdvisorResponse(
-        `Based on your ${result.level} assessment, approval bottlenecks may be affecting operational efficiency. Workflow automation can streamline approvals while improving governance, accountability, and audit visibility.`
-      );
-      return;
-    }
-
-    // Default Level-based checks
-    if (score <= 6) {
-      setAdvisorResponse(`Based on your ${result.level} assessment, your organization appears heavily dependent on manual processes. Focus on documenting workflows, reducing spreadsheet usage, and improving operational visibility. Regarding "${challenge}", consider standardizing the process first before pursuing automation.`);
-      return;
-    }
-
-    if (score <= 12) {
-      setAdvisorResponse(`Based on your ${result.level} assessment, your organization is beginning its automation journey. Regarding "${challenge}", prioritize process consistency, centralized reporting, and eliminating repetitive manual work.`);
-      return;
-    }
-
-    if (score <= 18) {
-      setAdvisorResponse(`Based on your ${result.level} assessment, your organization has established processes. For "${challenge}", opportunities likely exist around workflow automation, executive dashboards, and operational intelligence to improve visibility and decision-making.`);
-      return;
-    }
-
-    if (score <= 24) {
-      setAdvisorResponse(`Based on your ${result.level} assessment, your organization already demonstrates strong automation maturity. For "${challenge}", focus on system integration, predictive reporting, and advanced operational analytics.`);
-      return;
-    }
-
-    setAdvisorResponse(`Based on your ${result.level} assessment, your organization operates at a highly advanced level. For "${challenge}", explore AI-assisted decision support, predictive analytics, and enterprise-wide automation initiatives.`);
   };
 
-  const result = getResult();
+  const readinessPercentage = Math.round((score / 30) * 100);
 
   return (
     <>
       <Helmet>
         <title>Automation Readiness Assessment | LemonLogic</title>
-        <meta name="description" content="Assess your organization's automation maturity." />
       </Helmet>
 
       <div className="min-h-screen bg-white">
@@ -135,22 +82,14 @@ export default function Assessment() {
                   <span>{answeredCount} of {questions.length} answered</span>
                 </div>
                 <div className="w-full bg-slate-200 rounded-full h-3">
-                  <div className="bg-yellow-400 h-3 rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
+                  <div className="bg-yellow-400 h-3 rounded-full transition-all" style={{ width: `${progress}%` }} />
                 </div>
               </div>
-              
               <div className="space-y-8">
                 {questions.map((question, index) => (
                   <div key={index} className="border rounded-xl p-6 shadow-sm">
-                    <label htmlFor={`q-${index}`} className="block font-semibold mb-4 text-lg">
-                      {index + 1}. {question}
-                    </label>
-                    <select
-                      id={`q-${index}`}
-                      className="w-full border rounded-lg p-3 bg-white"
-                      value={answers[index]}
-                      onChange={(e) => handleChange(index, e.target.value)}
-                    >
+                    <label className="block font-semibold mb-4 text-lg">{index + 1}. {question}</label>
+                    <select className="w-full border rounded-lg p-3 bg-white" value={answers[index]} onChange={(e) => handleChange(index, e.target.value)}>
                       <option value="">Select an answer</option>
                       <option value="0">Never</option>
                       <option value="1">Sometimes</option>
@@ -160,123 +99,76 @@ export default function Assessment() {
                   </div>
                 ))}
               </div>
-
-              <button
-                onClick={() => setSubmitted(true)}
-                disabled={!allAnswered}
-                className={`mt-10 px-8 py-4 rounded-lg font-semibold transition-colors ${
-                  allAnswered ? "bg-yellow-400 hover:bg-yellow-500 text-black" : "bg-slate-200 text-slate-400 cursor-not-allowed"
-                }`}
-              >
+              <button onClick={() => setSubmitted(true)} disabled={!allAnswered} className={`mt-10 px-8 py-4 rounded-lg font-semibold ${allAnswered ? "bg-yellow-400 hover:bg-yellow-500" : "bg-slate-200 cursor-not-allowed"}`}>
                 {allAnswered ? "View My Results" : "Please answer all questions"}
               </button>
             </>
           ) : (
             <div className="bg-slate-50 border rounded-2xl p-10">
               <div className="bg-white border rounded-2xl p-8 mb-8 shadow-sm">
-                <div className="text-sm uppercase tracking-wider text-slate-500 mb-4">
-                  Executive Automation Scorecard
-                </div>
                 <div className="grid md:grid-cols-3 gap-6">
-                  <div>
-                    <div className="text-sm text-slate-500 mb-2">Automation Readiness</div>
-                    <div className="text-4xl font-bold">{score} / 30</div>
-                  </div>
-                  <div>
-                    <div className="text-sm text-slate-500 mb-2">Maturity Level</div>
-                    <div className="text-xl font-semibold text-yellow-600">{result.level}</div>
-                  </div>
-                  <div>
-                    <div className="text-sm text-slate-500 mb-2">Readiness Percentage</div>
-                    <div className="text-4xl font-bold text-yellow-500">{readinessPercentage}%</div>
-                    <div className="text-sm text-slate-500 mt-2">
-                      {getReadinessLabel()}
-                    </div>
-                  </div>
+                  <div><div className="text-sm text-slate-500 mb-2">Score</div><div className="text-4xl font-bold">{score} / 30</div></div>
+                  <div><div className="text-sm text-slate-500 mb-2">Level</div><div className="text-xl font-semibold text-yellow-600">{result.level}</div></div>
+                  <div><div className="text-sm text-slate-500 mb-2">Readiness</div><div className="text-4xl font-bold text-yellow-500">{readinessPercentage}%</div></div>
                 </div>
               </div>
 
-              <p className="text-slate-700 mb-8 text-lg">{result.description}</p>
+              <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
+                <h4 className="text-xl font-bold mb-4">Executive Diagnosis</h4>
+                <p className="text-slate-700 leading-relaxed">
+                  {score <= 10 && "Your organization currently relies heavily on manual processes and has significant opportunities to improve efficiency, visibility, and operational consistency through automation."}
+                  {score > 10 && score <= 20 && "Your organization has established some operational structure, but several manual workflows and reporting processes continue to limit efficiency and scalability."}
+                  {score > 20 && "Your organization demonstrates strong automation maturity. The next opportunity is optimizing visibility, intelligence, and decision-making through advanced operational systems."}
+                </p>
+              </div>
+
+              <div className="bg-slate-50 border rounded-xl p-6 mb-8">
+                <h4 className="text-xl font-bold mb-4">Primary Business Challenges</h4>
+                <ul className="space-y-3">
+                  {score <= 10 && <><li>• High dependence on manual administrative work</li><li>• Limited operational visibility</li><li>• Inefficient reporting processes</li></>}
+                  {score > 10 && score <= 20 && <><li>• Inconsistent workflows across operations</li><li>• Reporting delays impacting decision-making</li><li>• Limited system integration</li></>}
+                  {score > 20 && <><li>• Scaling operational visibility</li><li>• Advanced performance monitoring</li><li>• Executive decision intelligence</li></>}
+                </ul>
+              </div>
 
               <div className="mb-8">
                 <h4 className="text-xl font-bold mb-4">Recommended Priorities</h4>
                 <ul className="space-y-3">
                   {result.recommendations.map((item, index) => (
-                    <li key={index} className="flex items-center">
-                      <span className="text-yellow-500 mr-3">✓</span>
-                      {item}
-                    </li>
+                    <li key={index} className="flex items-center"><span className="text-yellow-500 mr-3">✓</span>{item}</li>
                   ))}
                 </ul>
               </div>
 
-              {/* LemonLogic Business Advisor Card */}
-              <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
-                <h4 className="text-xl font-bold mb-4">
-                  LemonLogic Business Advisor
-                </h4>
-                <p className="text-slate-600 mb-4">
-                  Describe your biggest operational challenge and receive guidance based on your assessment results.
-                </p>
-                <textarea
-                  rows="4"
-                  value={challenge}
-                  onChange={(e) => setChallenge(e.target.value)}
-                  placeholder="Example: We still use spreadsheets for inventory management."
-                  className="w-full border rounded-lg p-4 mb-4"
-                />
-                <button
-                  onClick={getAdvisorResponse}
-                  className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold"
-                >
-                  Get Guidance
-                </button>
-                {advisorResponse && (
-                  <div className="mt-6 bg-slate-50 border rounded-lg p-4">
-                    <h5 className="font-semibold mb-2">Advisor Recommendation</h5>
-                    <p className="text-slate-700">{advisorResponse}</p>
-                  </div>
-                )}
+              <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-8">
+                <h4 className="text-xl font-bold mb-4">Expected Business Impact</h4>
+                <ul className="space-y-3">
+                  <li>✓ Faster decision-making</li>
+                  <li>✓ Improved operational visibility</li>
+                  <li>✓ Reduced administrative workload</li>
+                  <li>✓ Better process consistency</li>
+                  <li>✓ Increased organizational scalability</li>
+                </ul>
               </div>
 
               <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
-                <h4 className="text-xl font-bold mb-4">
-                  Email My Executive Scorecard
-                </h4>
-                <p className="text-slate-600 mb-6">
-                  Receive a copy of your assessment results and recommendations directly in your inbox.
-                </p>
-                <form
-                  action="https://formspree.io/f/xojzqzzv"
-                  method="POST"
-                  className="space-y-4"
-                >
-                  <input type="text" name="name" placeholder="Your Name" required className="w-full border rounded-lg p-3" />
-                  <input type="text" name="company" placeholder="Company Name" className="w-full border rounded-lg p-3" />
-                  <input type="email" name="email" placeholder="Email Address" required className="w-full border rounded-lg p-3" />
+                <h4 className="text-xl font-bold mb-4">Executive Advisory Analysis</h4>
+                <textarea rows="4" value={challenge} onChange={(e) => setChallenge(e.target.value)} placeholder="Describe your biggest operational challenge..." className="w-full border rounded-lg p-4 mb-4" />
+                <button onClick={getAdvisorResponse} className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold">Get Analysis</button>
+                {advisorResponse && <div className="mt-6 bg-slate-50 border rounded-lg p-4"><p>{advisorResponse}</p></div>}
+              </div>
+
+              <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
+                <h4 className="text-xl font-bold mb-4">Email My Executive Scorecard</h4>
+                <form action="https://formspree.io/f/xojzqzzv" method="POST" className="space-y-4">
+                  <input type="text" name="name" placeholder="Name" required className="w-full border rounded-lg p-3" />
+                  <input type="email" name="email" placeholder="Email" required className="w-full border rounded-lg p-3" />
                   <input type="hidden" name="score" value={score} />
-                  <input type="hidden" name="level" value={result.level} />
-                  <input type="hidden" name="readiness_percentage" value={readinessPercentage} />
-                  <button type="submit" className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold">
-                    Email My Scorecard
-                  </button>
+                  <button type="submit" className="bg-yellow-400 px-6 py-3 rounded-lg font-semibold">Email My Scorecard</button>
                 </form>
               </div>
 
-              <div className="bg-white border rounded-xl p-6 shadow-sm">
-                <h4 className="text-xl font-bold mb-4">Next Step</h4>
-                <p className="mb-6">Discover practical opportunities to improve efficiency and operational performance.</p>
-                <a href="/contact" className="inline-block bg-yellow-400 hover:bg-yellow-500 px-8 py-4 rounded-lg font-semibold transition-colors">
-                  Request a Consultation
-                </a>
-              </div>
-
-              <button
-                onClick={() => { setSubmitted(false); setAnswers(Array(questions.length).fill("")); setAdvisorResponse(""); setChallenge(""); }}
-                className="mt-8 text-slate-500 hover:text-slate-800 underline transition-colors"
-              >
-                Retake Assessment
-              </button>
+              <button onClick={() => { setSubmitted(false); setAnswers(Array(questions.length).fill("")); }} className="text-slate-500 underline">Retake Assessment</button>
             </div>
           )}
         </div>
