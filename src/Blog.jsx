@@ -9,6 +9,7 @@ const posts = [
     excerpt: "Discover how centralized executive dashboards provide real-time visibility, strengthen strategic planning, and support data-driven decision-making.",
     image: "/blog-images/executive-dashboard.png",
     readTime: "5 min read",
+    date: "2026-06-09",
   },
   {
     slug: "operational-intelligence-why-it-matters",
@@ -16,6 +17,7 @@ const posts = [
     excerpt: "Learn how operational intelligence transforms raw data into real-time visibility, faster decision-making, and improved efficiency.",
     image: "/blog-images/operational-intelligence.png",
     readTime: "6 min read",
+    date: "2026-06-08",
   },
   {
     slug: "workflow-automation-signs",
@@ -23,6 +25,7 @@ const posts = [
     excerpt: "Learn the warning signs that indicate manual processes are slowing down your business.",
     image: "/blog-images/workflow-automation.png",
     readTime: "5 min read",
+    date: "2026-06-07",
   },
   {
     slug: "logistics-intelligence-operational-visibility",
@@ -30,6 +33,7 @@ const posts = [
     excerpt: "Discover how logistics intelligence platforms provide real-time visibility and better decision-making across operations.",
     image: "/blog-images/logistics-intelligence.png",
     readTime: "5 min read",
+    date: "2026-06-06",
   },
   {
     slug: "spreadsheets-business-risk",
@@ -37,6 +41,7 @@ const posts = [
     excerpt: "Understand the limitations of spreadsheets and when organizations should move to dedicated business systems.",
     image: "/blog-images/spreadsheets-business-risk.png",
     readTime: "4 min read",
+    date: "2026-06-05",
   },
   {
     slug: "automated-invoicing-reduces-administrative-costs",
@@ -44,6 +49,7 @@ const posts = [
     excerpt: "Explore how invoice automation streamlines financial workflows, improves accuracy, and reduces operational overhead.",
     image: "/blog-images/automated-invoicing.png",
     readTime: "6 min read",
+    date: "2026-06-04",
   },
   {
     slug: "why-growing-businesses-outgrow-excel",
@@ -51,6 +57,7 @@ const posts = [
     excerpt: "Discover the hidden risks of spreadsheet dependency and learn the signs that indicate your business is ready for a dedicated system.",
     image: "/blog-images/outgrow-excel.png",
     readTime: "5 min read",
+    date: "2026-06-03",
   },
   {
     slug: "hidden-costs-manual-processes",
@@ -58,6 +65,7 @@ const posts = [
     excerpt: "Discover the hidden costs of manual business processes and learn how automation improves productivity, visibility, scalability, and customer satisfaction.",
     image: "/blog-images/hidden-costs-manual-processes.png",
     readTime: "7 min read",
+    date: "2026-06-02",
   },
   {
     slug: "lemonlogic-automation-maturity-model",
@@ -65,6 +73,7 @@ const posts = [
     excerpt: "Discover the LemonLogic Automation Maturity Model, a proprietary framework that helps organizations identify operational bottlenecks, improve visibility, and scale intelligently.",
     image: "/blog-images/lemonlogic-automation-maturity-model.png",
     readTime: "8 min read",
+    date: "2026-06-01",
   },
   {
     slug: "executive-guide-automation-readiness",
@@ -72,6 +81,7 @@ const posts = [
     excerpt: "Learn how to evaluate your organization's automation readiness, identify operational bottlenecks, and build a roadmap toward greater efficiency, visibility, and business growth.",
     image: "/blog-images/executive-guide-automation-readiness.png",
     readTime: "8 min read",
+    date: "2026-05-30",
   },
   {
     slug: "manual-process-costs-business",
@@ -79,6 +89,7 @@ const posts = [
     excerpt: "Discover the hidden financial and operational costs of manual business processes, and learn how automation can improve efficiency, visibility, accuracy, and growth.",
     image: "/blog-images/manual-process-costs-business.png",
     readTime: "8 min read",
+    date: "2026-05-28",
   },
   {
     slug: "executive-dashboards-what-ceos-need-to-see",
@@ -86,14 +97,23 @@ const posts = [
     excerpt: "Discover the key metrics, insights, and operational visibility leaders need to make faster, more informed business decisions.",
     image: "/blog-images/executive-dashboards-ceo.png",
     readTime: "8 min read",
+    date: "2026-05-25",
   },
 ];
 
-const FEATURED_SLUG = "executive-guide-automation-readiness";
+const FEATURED_SLUG = "executive-dashboards-what-ceos-need-to-see";
 const POSTS_PER_PAGE = 6;
 
 export default function Blog() {
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
+
+  // Helper function to format dates as "Month Year"
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
+  };
 
   const { featuredPost, remainingPosts } = useMemo(() => {
     const featured = posts.find((p) => p.slug === FEATURED_SLUG);
@@ -194,7 +214,7 @@ export default function Blog() {
                   {post.excerpt}
                 </p>
                 <p className="mt-3 text-sm text-slate-500">
-                  {post.readTime}
+                  {post.readTime} • {formatDate(post.date)}
                 </p>
                 
                 <div className="mt-auto">
