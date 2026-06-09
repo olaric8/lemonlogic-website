@@ -131,7 +131,69 @@ export default function Assessment() {
                   ))}
                 </ul>
               </div>
+<div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
+  <h4 className="text-xl font-bold mb-4">
+    Email My Executive Scorecard
+  </h4>
 
+  <p className="text-slate-600 mb-6">
+    Receive a copy of your assessment results and recommendations directly in your inbox.
+  </p>
+
+  <form
+    action="https://formspree.io/f/xojzqzzv"
+    method="POST"
+    className="space-y-4"
+  >
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required
+      className="w-full border rounded-lg p-3"
+    />
+
+    <input
+      type="text"
+      name="company"
+      placeholder="Company Name"
+      className="w-full border rounded-lg p-3"
+    />
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Email Address"
+      required
+      className="w-full border rounded-lg p-3"
+    />
+
+    <input
+      type="hidden"
+      name="score"
+      value={score}
+    />
+
+    <input
+      type="hidden"
+      name="level"
+      value={result.level}
+    />
+
+    <input
+      type="hidden"
+      name="readiness_percentage"
+      value={readinessPercentage}
+    />
+
+    <button
+      type="submit"
+      className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold"
+    >
+      Email My Scorecard
+    </button>
+  </form>
+</div>
               <div className="bg-white border rounded-xl p-6 shadow-sm">
                 <h4 className="text-xl font-bold mb-4">Next Step</h4>
                 <p className="mb-6">Discover practical opportunities to improve efficiency and operational performance.</p>
