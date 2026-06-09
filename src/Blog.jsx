@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
@@ -65,13 +66,23 @@ const posts = [
     image: "/blog-images/lemonlogic-automation-maturity-model.png",
     readTime: "8 min read",
   },
+  {
+    slug: "executive-guide-automation-readiness",
+    title: "The Executive Guide To Automation Readiness",
+    excerpt: "Learn how to evaluate your organization's automation readiness, identify operational bottlenecks, and build a roadmap toward greater efficiency, visibility, and business growth.",
+    image: "/blog-images/executive-guide-automation-readiness.png",
+    readTime: "8 min read",
+  },
 ];
 
-const FEATURED_SLUG = "how-dashboards-improve-executive-decision-making";
+const FEATURED_SLUG = "executive-guide-automation-readiness";
 
 export default function Blog() {
-  const featuredPost = posts.find((p) => p.slug === FEATURED_SLUG);
-  const remainingPosts = posts.filter((p) => p.slug !== FEATURED_SLUG);
+  const { featuredPost, remainingPosts } = useMemo(() => {
+    const featured = posts.find((p) => p.slug === FEATURED_SLUG);
+    const remaining = posts.filter((p) => p.slug !== FEATURED_SLUG);
+    return { featuredPost: featured, remainingPosts: remaining };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -121,6 +132,7 @@ export default function Blog() {
                     src={featuredPost.image}
                     alt={featuredPost.title}
                     className="w-full rounded-2xl border border-slate-200"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -146,6 +158,7 @@ export default function Blog() {
                   src={post.image}
                   alt={post.title}
                   className="w-full h-64 object-cover"
+                  loading="lazy"
                 />
               ) : (
                 <div className="w-full h-64 bg-slate-100 flex items-center justify-center">
@@ -154,9 +167,9 @@ export default function Blog() {
               )}
 
               <div className="p-8 flex flex-col flex-grow">
-                <h2 className="text-2xl font-bold leading-tight">
+                <h3 className="text-2xl font-bold leading-tight">
                   {post.title}
-                </h2>
+                </h3>
                 <p className="mt-4 text-slate-600 line-clamp-3">
                   {post.excerpt}
                 </p>

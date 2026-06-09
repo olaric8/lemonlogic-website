@@ -17,6 +17,8 @@ const questions = [
 export default function Assessment() {
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
   const [submitted, setSubmitted] = useState(false);
+  const [challenge, setChallenge] = useState("");
+  const [advisorResponse, setAdvisorResponse] = useState("");
 
   const handleChange = (index, value) => {
     const updated = [...answers];
@@ -37,8 +39,82 @@ export default function Assessment() {
     return { level: "Level 5 – Intelligent Enterprise", description: "Your organization demonstrates advanced operational intelligence and data-driven decision making.", recommendations: ["Explore advanced analytics", "Leverage AI-assisted decision support", "Continuously optimize business processes", "Scale automation across departments"] };
   };
 
-  const result = getResult();
   const readinessPercentage = Math.round((score / 30) * 100);
+
+  const getReadinessLabel = () => {
+    if (readinessPercentage <= 20) return "Critical Modernization Needed";
+    if (readinessPercentage <= 40) return "Early Automation Journey";
+    if (readinessPercentage <= 60) return "Developing Operational Excellence";
+    if (readinessPercentage <= 80) return "High Operational Maturity";
+    return "Intelligent Enterprise";
+  };
+
+  const getAdvisorResponse = () => {
+    if (!challenge.trim()) {
+      setAdvisorResponse("Please describe your operational challenge.");
+      return;
+    }
+
+    const challengeText = challenge.toLowerCase();
+
+    // Keyword-based advisor checks
+    if (
+      challengeText.includes("excel") ||
+      challengeText.includes("spreadsheet") ||
+      challengeText.includes("report")
+    ) {
+      setAdvisorResponse(
+        `Based on your ${result.level} assessment, spreadsheet-driven operations may be limiting operational visibility and slowing reporting. Consider centralized dashboards, automated reporting workflows, and operational intelligence tools to improve decision-making.`
+      );
+      return;
+    }
+
+    if (
+      challengeText.includes("inventory") ||
+      challengeText.includes("stock") ||
+      challengeText.includes("warehouse")
+    ) {
+      setAdvisorResponse(
+        `Inventory visibility appears to be a challenge. Based on your ${result.level} assessment, improving inventory reporting, stock monitoring dashboards, and workflow automation could significantly improve operational visibility and decision-making.`
+      );
+      return;
+    }
+
+    if (
+      challengeText.includes("approval") ||
+      challengeText.includes("approval process")
+    ) {
+      setAdvisorResponse(
+        `Based on your ${result.level} assessment, approval bottlenecks may be affecting operational efficiency. Workflow automation can streamline approvals while improving governance, accountability, and audit visibility.`
+      );
+      return;
+    }
+
+    // Default Level-based checks
+    if (score <= 6) {
+      setAdvisorResponse(`Based on your ${result.level} assessment, your organization appears heavily dependent on manual processes. Focus on documenting workflows, reducing spreadsheet usage, and improving operational visibility. Regarding "${challenge}", consider standardizing the process first before pursuing automation.`);
+      return;
+    }
+
+    if (score <= 12) {
+      setAdvisorResponse(`Based on your ${result.level} assessment, your organization is beginning its automation journey. Regarding "${challenge}", prioritize process consistency, centralized reporting, and eliminating repetitive manual work.`);
+      return;
+    }
+
+    if (score <= 18) {
+      setAdvisorResponse(`Based on your ${result.level} assessment, your organization has established processes. For "${challenge}", opportunities likely exist around workflow automation, executive dashboards, and operational intelligence to improve visibility and decision-making.`);
+      return;
+    }
+
+    if (score <= 24) {
+      setAdvisorResponse(`Based on your ${result.level} assessment, your organization already demonstrates strong automation maturity. For "${challenge}", focus on system integration, predictive reporting, and advanced operational analytics.`);
+      return;
+    }
+
+    setAdvisorResponse(`Based on your ${result.level} assessment, your organization operates at a highly advanced level. For "${challenge}", explore AI-assisted decision support, predictive analytics, and enterprise-wide automation initiatives.`);
+  };
+
+  const result = getResult();
 
   return (
     <>
@@ -97,7 +173,6 @@ export default function Assessment() {
             </>
           ) : (
             <div className="bg-slate-50 border rounded-2xl p-10">
-              {/* Executive Automation Scorecard */}
               <div className="bg-white border rounded-2xl p-8 mb-8 shadow-sm">
                 <div className="text-sm uppercase tracking-wider text-slate-500 mb-4">
                   Executive Automation Scorecard
@@ -114,6 +189,9 @@ export default function Assessment() {
                   <div>
                     <div className="text-sm text-slate-500 mb-2">Readiness Percentage</div>
                     <div className="text-4xl font-bold text-yellow-500">{readinessPercentage}%</div>
+                    <div className="text-sm text-slate-500 mt-2">
+                      {getReadinessLabel()}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -131,69 +209,60 @@ export default function Assessment() {
                   ))}
                 </ul>
               </div>
-<div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
-  <h4 className="text-xl font-bold mb-4">
-    Email My Executive Scorecard
-  </h4>
 
-  <p className="text-slate-600 mb-6">
-    Receive a copy of your assessment results and recommendations directly in your inbox.
-  </p>
+              {/* LemonLogic Business Advisor Card */}
+              <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
+                <h4 className="text-xl font-bold mb-4">
+                  LemonLogic Business Advisor
+                </h4>
+                <p className="text-slate-600 mb-4">
+                  Describe your biggest operational challenge and receive guidance based on your assessment results.
+                </p>
+                <textarea
+                  rows="4"
+                  value={challenge}
+                  onChange={(e) => setChallenge(e.target.value)}
+                  placeholder="Example: We still use spreadsheets for inventory management."
+                  className="w-full border rounded-lg p-4 mb-4"
+                />
+                <button
+                  onClick={getAdvisorResponse}
+                  className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold"
+                >
+                  Get Guidance
+                </button>
+                {advisorResponse && (
+                  <div className="mt-6 bg-slate-50 border rounded-lg p-4">
+                    <h5 className="font-semibold mb-2">Advisor Recommendation</h5>
+                    <p className="text-slate-700">{advisorResponse}</p>
+                  </div>
+                )}
+              </div>
 
-  <form
-    action="https://formspree.io/f/xojzqzzv"
-    method="POST"
-    className="space-y-4"
-  >
-    <input
-      type="text"
-      name="name"
-      placeholder="Your Name"
-      required
-      className="w-full border rounded-lg p-3"
-    />
+              <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
+                <h4 className="text-xl font-bold mb-4">
+                  Email My Executive Scorecard
+                </h4>
+                <p className="text-slate-600 mb-6">
+                  Receive a copy of your assessment results and recommendations directly in your inbox.
+                </p>
+                <form
+                  action="https://formspree.io/f/xojzqzzv"
+                  method="POST"
+                  className="space-y-4"
+                >
+                  <input type="text" name="name" placeholder="Your Name" required className="w-full border rounded-lg p-3" />
+                  <input type="text" name="company" placeholder="Company Name" className="w-full border rounded-lg p-3" />
+                  <input type="email" name="email" placeholder="Email Address" required className="w-full border rounded-lg p-3" />
+                  <input type="hidden" name="score" value={score} />
+                  <input type="hidden" name="level" value={result.level} />
+                  <input type="hidden" name="readiness_percentage" value={readinessPercentage} />
+                  <button type="submit" className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold">
+                    Email My Scorecard
+                  </button>
+                </form>
+              </div>
 
-    <input
-      type="text"
-      name="company"
-      placeholder="Company Name"
-      className="w-full border rounded-lg p-3"
-    />
-
-    <input
-      type="email"
-      name="email"
-      placeholder="Email Address"
-      required
-      className="w-full border rounded-lg p-3"
-    />
-
-    <input
-      type="hidden"
-      name="score"
-      value={score}
-    />
-
-    <input
-      type="hidden"
-      name="level"
-      value={result.level}
-    />
-
-    <input
-      type="hidden"
-      name="readiness_percentage"
-      value={readinessPercentage}
-    />
-
-    <button
-      type="submit"
-      className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold"
-    >
-      Email My Scorecard
-    </button>
-  </form>
-</div>
               <div className="bg-white border rounded-xl p-6 shadow-sm">
                 <h4 className="text-xl font-bold mb-4">Next Step</h4>
                 <p className="mb-6">Discover practical opportunities to improve efficiency and operational performance.</p>
@@ -203,7 +272,7 @@ export default function Assessment() {
               </div>
 
               <button
-                onClick={() => { setSubmitted(false); setAnswers(Array(questions.length).fill("")); }}
+                onClick={() => { setSubmitted(false); setAnswers(Array(questions.length).fill("")); setAdvisorResponse(""); setChallenge(""); }}
                 className="mt-8 text-slate-500 hover:text-slate-800 underline transition-colors"
               >
                 Retake Assessment
