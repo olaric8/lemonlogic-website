@@ -73,6 +73,13 @@ const posts = [
     image: "/blog-images/executive-guide-automation-readiness.png",
     readTime: "8 min read",
   },
+  {
+    slug: "manual-process-costs-business",
+    title: "How Much Are Manual Processes Costing Your Business?",
+    excerpt: "Discover the hidden financial and operational costs of manual business processes, and learn how automation can improve efficiency, visibility, accuracy, and growth.",
+    image: "/blog-images/manual-process-costs-business.png",
+    readTime: "8 min read",
+  },
 ];
 
 const FEATURED_SLUG = "executive-guide-automation-readiness";
