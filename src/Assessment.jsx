@@ -1,7 +1,8 @@
 import { useState, useMemo, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ExecutiveReportPDF from "./components/ExecutiveReportPDF";
 const questions = [
   "Do you rely on spreadsheets for critical business operations?",
   "Are reports manually compiled from multiple sources?",
@@ -172,7 +173,38 @@ export default function Assessment() {
                 Learn More About This Solution &rarr;
               </Link>
             </div>
+<div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
+  <h4 className="text-xl font-bold mb-4">
+    Executive Report
+  </h4>
 
+  <p className="text-slate-600 mb-6">
+    Download a professional executive report containing your
+    assessment results, recommendations, and strategic roadmap.
+  </p>
+
+  <PDFDownloadLink
+    document={
+      <ExecutiveReportPDF
+        score={score}
+        readinessPercentage={readinessPercentage}
+        level={result.level}
+        summary={getExecutiveNarrative()}
+        recommendations={result.recommendations}
+        solution={getRecommendedSolution.title}
+      />
+    }
+    fileName="LemonLogic-Executive-Assessment-Report.pdf"
+  >
+    {({ loading }) => (
+      <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold transition">
+        {loading
+          ? "Preparing Executive Report..."
+          : "📄 Download Executive Report"}
+      </button>
+    )}
+  </PDFDownloadLink>
+</div>
             {/* Executive Summary & Insights */}
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
               <h4 className="text-xl font-bold mb-4">Executive Summary</h4>
