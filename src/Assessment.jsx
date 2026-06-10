@@ -31,6 +31,16 @@ export default function Assessment() {
   const progress = (answeredCount / questions.length) * 100;
   const score = answers.reduce((total, value) => total + (Number(value) || 0), 0);
 
+  const getAssessmentInsight = () => {
+    const insights = [];
+    if (Number(answers[0]) <= 1) insights.push("Your responses indicate a significant dependence on spreadsheets for operational management.");
+    if (Number(answers[1]) <= 1) insights.push("Reporting processes appear to rely heavily on manual effort, potentially delaying decision-making.");
+    if (Number(answers[4]) <= 1) insights.push("Leadership visibility may be constrained by limited access to real-time performance dashboards.");
+    if (Number(answers[5]) <= 1) insights.push("Several repetitive business activities remain candidates for automation.");
+    if (Number(answers[8]) <= 1) insights.push("Operational performance visibility across teams appears limited.");
+    return insights;
+  };
+
   const result = useMemo(() => {
     if (score <= 6) return { level: "Level 1 – Reactive", description: "Your organization relies heavily on manual processes and has significant opportunities for automation.", recommendations: ["Reduce spreadsheet dependency", "Document key business processes", "Introduce workflow automation", "Improve operational visibility"] };
     if (score <= 12) return { level: "Level 2 – Emerging", description: "Some processes are digitized, but automation and visibility remain limited.", recommendations: ["Standardize operational workflows", "Automate repetitive administrative tasks", "Improve reporting processes", "Create centralized business data sources"] };
@@ -49,8 +59,6 @@ export default function Assessment() {
       return;
     }
     const challengeText = challenge.toLowerCase();
-    
-    // Updated Confidence Language
     const basePhrase = "Based on your assessment results, the most immediate opportunity for operational improvement appears to be";
     
     if (challengeText.includes("excel") || challengeText.includes("spreadsheet") || challengeText.includes("report")) {
@@ -122,6 +130,18 @@ export default function Assessment() {
                 </p>
               </div>
 
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
+                <h4 className="text-xl font-bold mb-4">Assessment Insights</h4>
+                <ul className="space-y-3">
+                  {getAssessmentInsight().map((insight, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="mr-3 text-blue-600">•</span>
+                      <span>{insight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
               <div className="bg-slate-50 border rounded-xl p-6 mb-8">
                 <h4 className="text-xl font-bold mb-4">Primary Business Challenges</h4>
                 <ul className="space-y-3">
@@ -153,7 +173,7 @@ export default function Assessment() {
 
               <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
                 <h4 className="text-xl font-bold mb-4">Executive Advisory Analysis</h4>
-                <textarea rows="4" value={challenge} onChange={(e) => setChallenge(e.target.value)} placeholder="Describe your biggest operational challenge..." className="w-full border rounded-lg p-4 mb-4" />
+                <textarea rows="4" value={challenge} onChange={(e) => setChallenge(e.target.value)} placeholder="Describe a business, reporting, workflow, visibility, or operational challenge you are currently facing..." className="w-full border rounded-lg p-4 mb-4" />
                 <button onClick={getAdvisorResponse} className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold">Get Analysis</button>
                 {advisorResponse && <div className="mt-6 bg-slate-50 border rounded-lg p-4"><p>{advisorResponse}</p></div>}
               </div>
