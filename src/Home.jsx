@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -8,6 +9,8 @@ import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="py-24 bg-white text-slate-800">
       <Helmet>
@@ -23,12 +26,14 @@ export default function Home() {
 
       <nav className="border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Logo */}
           <div>
             <h1 className="text-2xl font-bold">
               Lemon<span className="text-yellow-500">Logic</span>
             </h1>
           </div>
 
+          {/* Desktop Menu */}
           <div className="hidden md:flex gap-8">
             <a href="#">Home</a>
             <a href="#services">Services</a>
@@ -38,7 +43,45 @@ export default function Home() {
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="md:hidden text-3xl"
+          >
+            ☰
+          </button>
         </div>
+
+        {/* Mobile Slide-Out Menu */}
+        <div className={`fixed top-0 right-0 h-full w-64 bg-white z-50 transform transition-transform duration-300 ease-in-out ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="p-6">
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="text-2xl"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div className="flex flex-col p-6 space-y-6 text-lg">
+            <a href="#" onClick={() => setMenuOpen(false)}>Home</a>
+            <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+            <a href="#portfolio" onClick={() => setMenuOpen(false)}>Portfolio</a>
+            <Link to="/assessment" onClick={() => setMenuOpen(false)}>Assessment</Link>
+            <Link to="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
+            <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          </div>
+        </div>
+
+        {/* Dark Overlay */}
+        {menuOpen && (
+          <div
+            onClick={() => setMenuOpen(false)}
+            className="fixed inset-0 bg-black/40 z-40"
+          />
+        )}
       </nav>
 
       {/* Hero */}
@@ -94,7 +137,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-5 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
             <div className="p-6 bg-white rounded-xl shadow-sm">
               <div className="text-3xl font-bold">1000+</div>
               <div className="text-gray-600 mt-2">Locations Managed</div>
