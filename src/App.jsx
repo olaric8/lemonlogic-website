@@ -1,3 +1,8 @@
+import BusinessProcessAutomation from "./BusinessProcessAutomation";
+import ExecutiveDashboards from "./ExecutiveDashboards.jsx";
+import CustomBusinessSystems from "./CustomBusinessSystems.jsx";
+import AISolutions from "./AISolutions.jsx";
+import WebsiteDevelopment from "./WebsiteDevelopment.jsx"; // Added import
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Contact from "./Contact";
@@ -34,6 +39,28 @@ export default function App() {
         {/* Blog Routes */}
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
+
+        {/* Services Routes */}
+        <Route 
+          path="/services/business-process-automation" 
+          element={<BusinessProcessAutomation />} 
+        />
+        <Route 
+          path="/services/executive-dashboards" 
+          element={<ExecutiveDashboards />} 
+        />
+        <Route 
+          path="/services/custom-business-systems" 
+          element={<CustomBusinessSystems />} 
+        />
+        <Route 
+          path="/services/ai-solutions" 
+          element={<AISolutions />} 
+        />
+        <Route 
+          path="/services/website-development" 
+          element={<WebsiteDevelopment />} 
+        />
         
         {/* Catch-all route for 404s */}
         <Route path="*" element={<div>Page Not Found</div>} />
