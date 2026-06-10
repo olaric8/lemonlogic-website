@@ -58,6 +58,20 @@ export default function Assessment() {
     return [...new Set(priorities)];
   };
 
+  const getExecutiveNarrative = () => {
+    const priorities = getPriorityFocusAreas();
+    const visibility = priorities.includes("Executive Dashboards & Operational Visibility");
+    const workflow = priorities.includes("Workflow Automation");
+    const integration = priorities.includes("System Integration");
+
+    if (visibility && workflow && integration) return "Your assessment suggests that the organization is currently constrained by a combination of limited operational visibility, fragmented information management, and manual workflow execution. While some processes appear established, leadership reporting, cross-functional visibility, and process automation remain significant opportunities for improvement. A phased modernization initiative focused on operational intelligence, workflow automation, and system integration would likely deliver substantial business value.";
+    if (visibility && workflow) return "Your assessment indicates that reporting visibility and workflow efficiency represent the primary barriers to operational performance. Leadership visibility appears dependent on manual reporting processes, while workflow bottlenecks continue to create unnecessary administrative effort. Improving reporting automation and workflow management would likely generate immediate operational benefits.";
+    if (visibility) return "Your assessment suggests that operational visibility and reporting effectiveness are the most significant opportunities for improvement. Leadership access to timely business intelligence appears limited, which may impact decision-making speed and organizational responsiveness.";
+    if (workflow) return "Your assessment indicates that workflow consistency and process automation represent the largest opportunities for operational improvement. Standardizing and automating repetitive activities would likely improve efficiency, accountability, and scalability.";
+    if (integration) return "Your assessment suggests that disconnected systems and fragmented business data may be limiting organizational effectiveness. Consolidating information and improving system integration would support better visibility, reporting, and decision-making.";
+    return "Your organization demonstrates a relatively mature operational environment with opportunities for continued optimization, performance visibility, and strategic automation.";
+  };
+
   const getExecutiveSummary = () => {
     const priorities = getPriorityFocusAreas();
     if (priorities.includes("Executive Dashboards & Operational Visibility")) return "Your assessment suggests that improving visibility into operational performance and reporting processes is likely to deliver the fastest business impact.";
@@ -166,7 +180,7 @@ export default function Assessment() {
 
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
               <h4 className="text-xl font-bold mb-4">Executive Summary</h4>
-              <p className="text-slate-700 leading-relaxed">{getExecutiveSummary()}</p>
+              <p className="text-slate-700 leading-relaxed">{getExecutiveNarrative()}</p>
             </div>
 
             <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
@@ -242,7 +256,7 @@ export default function Assessment() {
 
             <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
               <h4 className="text-xl font-bold mb-4">Executive Advisory Analysis</h4>
-              <textarea rows="4" value={challenge} onChange={(e) => setChallenge(e.target.value)} placeholder="Describe a business, reporting, workflow, visibility, or operational challenge you are currently facing..." className="w-full border rounded-lg p-4 mb-4" />
+              <textarea rows="4" value={challenge} onChange={(e) => setChallenge(e.target.value)} placeholder="Describe your biggest operational challenge..." className="w-full border rounded-lg p-4 mb-4" />
               <button onClick={getAdvisorResponse} className="bg-yellow-400 hover:bg-yellow-500 px-6 py-3 rounded-lg font-semibold">Get Analysis</button>
               {advisorResponse && <div className="mt-6 bg-slate-50 border rounded-lg p-4"><p>{advisorResponse}</p></div>}
             </div>
