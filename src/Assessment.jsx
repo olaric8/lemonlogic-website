@@ -41,6 +41,60 @@ export default function Assessment() {
     return insights;
   };
 
+  const getPriorityFocusAreas = () => {
+    const priorities = [];
+
+    // Visibility & Reporting
+    if (
+      Number(answers[1]) <= 1 ||
+      Number(answers[4]) <= 1 ||
+      Number(answers[8]) <= 1
+    ) {
+      priorities.push("Executive Dashboards & Operational Visibility");
+      priorities.push("Reporting Automation");
+    }
+
+    // Workflow & Process Automation
+    if (
+      Number(answers[2]) <= 1 ||
+      Number(answers[5]) <= 1 ||
+      Number(answers[7]) <= 1
+    ) {
+      priorities.push("Workflow Automation");
+      priorities.push("Process Standardization");
+    }
+
+    // Data & Systems
+    if (
+      Number(answers[0]) <= 1 ||
+      Number(answers[3]) <= 1 ||
+      Number(answers[9]) <= 1
+    ) {
+      priorities.push("System Integration");
+      priorities.push("Centralized Business Data");
+    }
+
+    return [...new Set(priorities)];
+  };
+
+  const getExecutiveSummary = () => {
+    const priorities = getPriorityFocusAreas();
+
+    if (priorities.includes("Executive Dashboards & Operational Visibility")) {
+      return "Your assessment suggests that improving visibility into operational performance and reporting processes is likely to deliver the fastest business impact.";
+    }
+
+    if (priorities.includes("Workflow Automation")) {
+      return "Your assessment indicates that workflow efficiency and process consistency represent the largest opportunities for operational improvement.";
+    }
+
+    if (priorities.includes("System Integration")) {
+      return "Your assessment suggests that disconnected systems and fragmented data may be limiting organizational efficiency and decision-making.";
+    }
+
+    return "Your organization demonstrates a solid operational foundation with opportunities for continuous optimization.";
+  };
+
   const result = useMemo(() => {
     if (score <= 6) return { level: "Level 1 – Reactive", description: "Your organization relies heavily on manual processes and has significant opportunities for automation.", recommendations: ["Reduce spreadsheet dependency", "Document key business processes", "Introduce workflow automation", "Improve operational visibility"] };
     if (score <= 12) return { level: "Level 2 – Emerging", description: "Some processes are digitized, but automation and visibility remain limited.", recommendations: ["Standardize operational workflows", "Automate repetitive administrative tasks", "Improve reporting processes", "Create centralized business data sources"] };
@@ -122,6 +176,13 @@ export default function Assessment() {
               </div>
 
               <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
+                <h4 className="text-xl font-bold mb-4">Executive Summary</h4>
+                <p className="text-slate-700 leading-relaxed italic">
+                  {getExecutiveSummary()}
+                </p>
+              </div>
+
+              <div className="bg-white border rounded-xl p-6 shadow-sm mb-8">
                 <h4 className="text-xl font-bold mb-4">Executive Diagnosis</h4>
                 <p className="text-slate-700 leading-relaxed">
                   {score <= 10 && "Your organization currently relies heavily on manual processes and has significant opportunities to improve efficiency, visibility, and operational consistency through automation."}
@@ -137,6 +198,18 @@ export default function Assessment() {
                     <li key={index} className="flex items-start">
                       <span className="mr-3 text-blue-600">•</span>
                       <span>{insight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-green-50 border border-green-200 rounded-xl p-6 mb-8">
+                <h4 className="text-xl font-bold mb-4">Priority Focus Areas</h4>
+                <ul className="space-y-3">
+                  {getPriorityFocusAreas().map((item, index) => (
+                    <li key={index} className="flex items-center">
+                      <span className="text-green-600 mr-3">✓</span>
+                      {item}
                     </li>
                   ))}
                 </ul>
