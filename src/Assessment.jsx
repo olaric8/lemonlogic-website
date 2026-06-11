@@ -21,7 +21,9 @@ export default function Assessment() {
   const [submitted, setSubmitted] = useState(false);
   const [challenge, setChallenge] = useState("");
   const [advisorResponse, setAdvisorResponse] = useState("");
-
+const [name, setName] = useState("");
+const [company, setCompany] = useState("");
+const [email, setEmail] = useState("");
   const handleChange = (index, value) => {
     const updated = [...answers];
     updated[index] = value;
@@ -126,7 +128,34 @@ export default function Assessment() {
   };
 
   const readinessPercentage = Math.round((score / 30) * 100);
+const handleExecutiveReportRequest = async () => {
+  try {
+    await fetch("https://formspree.io/f/mjgdeldq", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        company,
+        email,
+        score,
+        readinessPercentage,
+        level: result.level,
+        executiveSummary: getExecutiveNarrative(),
+        recommendedSolution: getRecommendedSolution.title,
+        assessmentInsights: getAssessmentInsight().join(", "),
+        priorityFocusAreas: getPriorityFocusAreas().join(", "),
+      }),
+    });
 
+    alert("Executive Report details submitted successfully.");
+  } catch (error) {
+    console.error(error);
+    alert("Submission failed.");
+  }
+};
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-4xl mx-auto px-6 py-16">
@@ -182,7 +211,43 @@ export default function Assessment() {
     Download a professional executive report containing your
     assessment results, recommendations, and strategic roadmap.
   </p>
+<div className="space-y-4 mb-6">
+  <input
+    type="text"
+    placeholder="Full Name"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    className="w-full border rounded-lg p-3"
+  />
 
+  <input
+    type="text"
+    placeholder="Company Name"
+    value={company}
+    onChange={(e) => setCompany(e.target.value)}
+    className="w-full border rounded-lg p-3"
+  />
+
+  <input
+    type="email"
+    placeholder="Email Address"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    className="w-full border rounded-lg p-3"
+  />
+</div>
+
+<button
+  onClick={handleExecutiveReportRequest}
+  disabled={!name || !company || !email}
+  className={`mb-4 px-6 py-3 rounded-lg font-semibold text-white ${
+    name && company && email
+      ? "bg-slate-800 hover:bg-slate-900"
+      : "bg-slate-300 cursor-not-allowed"
+  }`}
+>
+  Email My Executive Report
+</button>
   <PDFDownloadLink
     document={
       <ExecutiveReportPDF
@@ -192,6 +257,8 @@ export default function Assessment() {
         summary={getExecutiveNarrative()}
         recommendations={result.recommendations}
         solution={getRecommendedSolution.title}
+        insights={getAssessmentInsight()}
+        priorities={getPriorityFocusAreas()}
       />
     }
     fileName="LemonLogic-Executive-Assessment-Report.pdf"
