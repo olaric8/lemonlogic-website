@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import ExecutiveReportPDF from "./components/ExecutiveReportPDF";
 const questions = [
@@ -24,6 +24,7 @@ export default function Assessment() {
 const [name, setName] = useState("");
 const [company, setCompany] = useState("");
 const [email, setEmail] = useState("");
+const navigate = useNavigate();
   const handleChange = (index, value) => {
     const updated = [...answers];
     updated[index] = value;
@@ -126,7 +127,50 @@ const [email, setEmail] = useState("");
       setAdvisorResponse(`${basePhrase} standardizing workflows followed by targeted automation.`);
     }
   };
+const saveToLEIPDashboard = () => {
+  const leipResults = {
+  score,
+  readinessPercentage,
+  level: result.level,
+  recommendations: result.recommendations,
+  executiveNarrative: getExecutiveNarrative(),
+  insights: getAssessmentInsight(),
+  priorities: getPriorityFocusAreas(),
+  solution: getRecommendedSolution.title,
 
+  companyName:
+    name || "Client Organization",
+
+  assessmentDate:
+    new Date().toLocaleDateString(),
+
+  reportId:
+    `LEIP-${Date.now()}`,
+
+  classification:
+    "Executive Confidential",
+
+  timestamp:
+    new Date().toISOString(),
+};
+const history =
+  JSON.parse(
+    localStorage.getItem("leipAssessmentHistory")
+  ) || [];
+
+history.push(leipResults);
+
+localStorage.setItem(
+  "leipAssessmentHistory",
+  JSON.stringify(history)
+);
+  localStorage.setItem(
+    "leipResults",
+    JSON.stringify(leipResults)
+  );
+
+  navigate("/dashboard");
+};
   const readinessPercentage = Math.round((score / 30) * 100);
 const handleExecutiveReportRequest = async () => {
   try {
@@ -227,7 +271,8 @@ const handleExecutiveReportRequest = async () => {
     onChange={(e) => setCompany(e.target.value)}
     className="w-full border rounded-lg p-3"
   />
-
+const [companyName, setCompanyName] =
+  useState("");
   <input
     type="email"
     placeholder="Email Address"
@@ -277,7 +322,12 @@ const handleExecutiveReportRequest = async () => {
               <h4 className="text-xl font-bold mb-4">Executive Summary</h4>
               <p className="text-slate-700 leading-relaxed">{getExecutiveNarrative()}</p>
             </div>
-
+<button
+  onClick={saveToLEIPDashboard}
+  className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold mr-4"
+>
+  Open Executive Dashboard
+</button>
             <button onClick={() => { setSubmitted(false); setAnswers(Array(questions.length).fill("")); }} className="text-slate-500 underline">Retake Assessment</button>
           </div>
         )}
