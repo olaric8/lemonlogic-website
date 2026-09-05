@@ -163,5 +163,14 @@ export default function LoginForm() {
         {loading ? "Signing In..." : "Sign In"}
       </button>
     </form>
+    <p className="text-center text-sm text-slate-400 mt-6">
+      Access by invitation only.{" "}
+      <a
+        href="/assessment"
+        className="text-yellow-400 hover:text-yellow-300 underline"
+      >
+        Take our free assessment to get started.
+      </a>
+    </p>
   );
 }
