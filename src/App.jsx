@@ -135,6 +135,7 @@ export default function App() {
 />
 <Route path="/accept-invitation" element={<AcceptInvitation />} />
 <Route path="/verify-email" element={<VerifyEmail />} />
+<Route path="/assessment" element={<Assessment />} />
 <Route
   path="/forgot-password"
   element={<ForgotPassword />}
@@ -145,11 +146,6 @@ export default function App() {
 <Route
   element={<ProtectedRoute />}
 >
-
-              <Route
-                path="/assessment"
-                element={<Assessment />}
-              />
 
               <Route
                 path="/dashboard"
