@@ -230,18 +230,21 @@ Respond as a senior business transformation advisor. Be direct, specific, and ac
     setLoading(true);
 
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
+      // Get JWT from storage for authenticated request
+      const token = localStorage.getItem("leip_access_token");
+      const response = await fetch("https://leip-backend.onrender.com/api/v1/ai/copilot", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
         body: JSON.stringify({
-          model: "claude-sonnet-4-6",
-          max_tokens: 1000,
-          system: systemPrompt,
           messages: newMessages.map(m => ({ role: m.role, content: m.content })),
+          systemPrompt,
         }),
       });
       const data = await response.json();
-      const reply = data.content?.[0]?.text ?? "I'm unable to respond right now. Please try again.";
+      const reply = data.data?.reply ?? "I'm unable to respond right now. Please try again.";
       setMessages(prev => [...prev, { role: "assistant", content: reply }]);
     } catch {
       setMessages(prev => [...prev, { role: "assistant", content: "Connection error. Please check your network and try again." }]);
