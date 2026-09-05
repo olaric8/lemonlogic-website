@@ -4,7 +4,7 @@
 // Version: 2.1
 // ============================================================
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import authenticationApi from "../../core/auth/authenticationApi";
 export default function LoginForm() {
@@ -135,12 +135,12 @@ export default function LoginForm() {
       </form>
       <p className="text-center text-sm text-slate-400 mt-6">
         Access by invitation only.{" "}
-        <a
-          href="/assessment"
+        <Link
+          to="/assessment"
           className="text-yellow-400 hover:text-yellow-300 underline"
         >
           Take our free assessment to get started.
-        </a>
+        </Link>
       </p>
     </>
   );
