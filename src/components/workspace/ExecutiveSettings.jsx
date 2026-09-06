@@ -92,7 +92,7 @@ export default function ExecutiveSettings() {
 
     const [
 
-        darkMode,
+
 
         setDarkMode,
 
@@ -218,59 +218,8 @@ export default function ExecutiveSettings() {
 
                 </ExecutiveSection>
 
-            </div>
+            <div className="grid xl:grid-cols-2 gap-8">
 
-            <div className="grid xl:grid-cols-2 gap-8">                {/* =====================================
-                    Appearance
-                ====================================== */}
-
-                <ExecutiveSection
-
-                    title="Appearance"
-
-                    description="Workspace appearance and display."
-
-                >
-
-                    <Toggle
-
-                        label="Dark Mode"
-
-                        checked={darkMode}
-
-                        onChange={() =>
-
-                            setDarkMode(!darkMode)
-
-                        }
-
-                    />
-
-                    <div className="pt-6">
-
-                        <label className="block text-sm font-semibold text-slate-700">
-
-                            Theme
-
-                        </label>
-
-                        <select
-
-                            className="w-full mt-2 rounded-xl border border-slate-300 px-4 py-3"
-
-                            defaultValue="System"
-
-                        >
-
-                            <option>System</option>
-                            <option>Light</option>
-                            <option>Dark</option>
-
-                        </select>
-
-                    </div>
-
-                </ExecutiveSection>
 
                 {/* =====================================
                     Security
