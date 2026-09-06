@@ -90,13 +90,6 @@ export default function ExecutiveSettings() {
 
     ] = useState(true);
 
-    const [
-
-
-
-        setDarkMode,
-
-    ] = useState(false);
 
     return (
 
