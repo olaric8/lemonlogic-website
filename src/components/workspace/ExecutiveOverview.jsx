@@ -14,6 +14,7 @@ This is the Executive Home workspace.
 =========================================================
 */
 
+import { useRef } from "react";
 import useExecutiveData from "../../hooks/useExecutiveData";
 
 import ExecutiveMetricCard from "../ui/ExecutiveMetricCard";
@@ -102,13 +103,10 @@ function Alert({
 
 }
 
-export default function ExecutiveOverview() {
+export default function ExecutiveOverview({ onNavigate }) {
 
-    const {
-
-        executiveProgramme,
-
-    } = useExecutiveData();
+    const copilotRef = useRef(null);
+    const { executiveProgramme } = useExecutiveData();
 
     if (!executiveProgramme) return null;
 
@@ -142,7 +140,7 @@ export default function ExecutiveOverview() {
                 Executive Copilot
             ======================================== */}
 
-            <ExecutiveCopilot />
+            <div ref={copilotRef}><div ref={copilotRef}><ExecutiveCopilot /></div></div>
 
             {/* =======================================
                 Executive KPI Summary
@@ -269,6 +267,7 @@ export default function ExecutiveOverview() {
                         fullWidth
 
                         className="justify-start h-full min-h-[150px]"
+                        onClick={() => copilotRef.current?.scrollIntoView({ behavior: "smooth" })}
 
                     >
 
@@ -297,6 +296,7 @@ export default function ExecutiveOverview() {
                         fullWidth
 
                         className="justify-start h-full min-h-[150px]"
+                        onClick={() => onNavigate?.("board")}
 
                     >
 
@@ -325,6 +325,7 @@ export default function ExecutiveOverview() {
                         fullWidth
 
                         className="justify-start h-full min-h-[150px]"
+                        onClick={() => onNavigate?.("analytics")}
 
                     >
 
@@ -353,6 +354,7 @@ export default function ExecutiveOverview() {
                         fullWidth
 
                         className="justify-start h-full min-h-[150px]"
+                        onClick={() => onNavigate?.("delivery")}
 
                     >
 

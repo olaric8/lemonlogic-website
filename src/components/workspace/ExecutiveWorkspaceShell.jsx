@@ -50,11 +50,7 @@ const WORKSPACES = {
 
 };
 
-function WorkspaceRenderer({
-
-    workspace,
-
-}) {
+function WorkspaceRenderer({ workspace, onNavigate }) {
 
     const ActiveWorkspace = useMemo(() => {
 
@@ -68,7 +64,7 @@ function WorkspaceRenderer({
 
     }, [workspace]);
 
-    return <ActiveWorkspace />;
+    return <ActiveWorkspace onNavigate={onNavigate} />;
 
 }
 
@@ -111,11 +107,7 @@ export default function ExecutiveWorkspaceShell() {
                 ====================================== */}
 
                 <section>
-                                        <WorkspaceRenderer
-
-                        workspace={activeWorkspace}
-
-                    />
+                                        <WorkspaceRenderer workspace={activeWorkspace} onNavigate={setActiveWorkspace} />
 
                 </section>
 
