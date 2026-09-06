@@ -108,11 +108,11 @@ const navigate = useNavigate();
   }, [answers]);
 
   const result = useMemo(() => {
-    if (score <= 6) return { level: "Level 1 â€“ Reactive", description: "Your organization relies heavily on manual processes.", recommendations: ["Reduce spreadsheet dependency", "Document key business processes"] };
-    if (score <= 12) return { level: "Level 2 â€“ Emerging", description: "Some processes are digitized, but automation remains limited.", recommendations: ["Standardize operational workflows", "Automate repetitive tasks"] };
-    if (score <= 18) return { level: "Level 3 â€“ Structured", description: "Your organization has established processes.", recommendations: ["Implement executive dashboards", "Increase process automation"] };
-    if (score <= 24) return { level: "Level 4 â€“ Optimized", description: "Strong operational visibility.", recommendations: ["Expand operational intelligence", "Integrate business systems"] };
-    return { level: "Level 5 â€“ Intelligent Enterprise", description: "Advanced operational intelligence.", recommendations: ["Leverage AI-assisted decision support", "Continuously optimize"] };
+    if (score <= 6) return { level: "Level 1 — Reactive", description: "Your organization relies heavily on manual processes.", recommendations: ["Reduce spreadsheet dependency", "Document key business processes"] };
+    if (score <= 12) return { level: "Level 2 — Emerging", description: "Some processes are digitized, but automation remains limited.", recommendations: ["Standardize operational workflows", "Automate repetitive tasks"] };
+    if (score <= 18) return { level: "Level 3 — Structured", description: "Your organization has established processes.", recommendations: ["Implement executive dashboards", "Increase process automation"] };
+    if (score <= 24) return { level: "Level 4 — Optimized", description: "Strong operational visibility.", recommendations: ["Expand operational intelligence", "Integrate business systems"] };
+    return { level: "Level 5 — Intelligent Enterprise", description: "Advanced operational intelligence.", recommendations: ["Leverage AI-assisted decision support", "Continuously optimize"] };
   }, [score]);
 
   const getAdvisorResponse = () => {
