@@ -1,4 +1,6 @@
+import Ok3dVerification from "./Ok3dVerification";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+            
 import Settings from "./pages/Settings";
 import AcceptInvitation from "./pages/AcceptInvitation";
 import VerifyEmail from "./pages/VerifyEmail";
@@ -49,6 +51,7 @@ export default function App() {
             {/* Public */}
 
             <Route path="/" element={<Home />} />
+                        <Route path="/ok3d" element={<Ok3dVerification />} />
 
             <Route path="/contact" element={<Contact />} />
 
