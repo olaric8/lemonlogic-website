@@ -20,6 +20,7 @@ export default function Ok3dVerification() {
           <div><dt style={{ fontWeight: 700 }}>Business registration number</dt><dd style={{ margin: "4px 0 0" }}>9094955</dd></div>
           <div><dt style={{ fontWeight: 700 }}>Business activity</dt><dd style={{ margin: "4px 0 0" }}>General merchandise</dd></div>
           <div><dt style={{ fontWeight: 700 }}>Registered business address</dt><dd style={{ margin: "4px 0 0" }}>04, Ifoshi Road, Iyana Ejigbo, Ejigbo, Lagos State, Nigeria</dd></div>
+          <div><dt style={{ fontWeight: 700 }}>Standardized verification address</dt><dd style={{ margin: "4px 0 0" }}>Plot 4 Ifoshi Road, Lagos, Nigeria</dd></div>
           <div><dt style={{ fontWeight: 700 }}>Business contact</dt><dd style={{ margin: "4px 0 0" }}><a href="mailto:hello@lemonlogicai.com" style={{ color: "#2563eb" }}>hello@lemonlogicai.com</a></dd></div>
         </dl>
         <p style={{ borderTop: "1px solid #e5e7eb", marginTop: 32, paddingTop: 24, color: "#475569", lineHeight: 1.6 }}>
